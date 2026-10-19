@@ -12,14 +12,20 @@
 @import url("./components/footer.css");
 @import url("./components/hero.css");
 
-/* Reset CSS */
+/* ==========================================
+   RESET CSS
+   ========================================== */
+
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
 }
 
-/* Variables globales */
+/* ==========================================
+   VARIABLES GLOBALES
+   ========================================== */
+
 :root {
   /* Tipografías */
   --font-heading: 'Space Grotesk', sans-serif;

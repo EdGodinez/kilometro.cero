@@ -4,7 +4,7 @@
    ========================================== */
 
 /* Importación de componentes */
-import { renderCardSlider } from './components/cardSlider.js';
+import { renderCardSlider } from './components/CardSlider.js';
 import { renderHero } from './components/hero.js';
 
 /* ==========================================
