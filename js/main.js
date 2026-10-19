@@ -3,9 +3,19 @@
    KILÓMETRO CERO - MAIN JS
    ========================================== */
 
-/* Importaciones */
+/* ==========================================
+   IMPORTACIÓN DE COMPONENTES
+   ========================================== */
+
+// Componentes propios
 import { renderHero } from './components/hero.js';
 import { renderAbout } from './components/about.js';
+
+// Componentes de productos
+import { renderCardSlider } from './components/CardSlider.js';
+import { renderCategorias } from './components/Categorias.js';
+import { renderTabsSlider } from './components/TabsSlider.js';
+import { renderProductGrid } from './components/ProductGrid.js';
 
 /* ==========================================
    HERO - INDEX
@@ -25,18 +35,29 @@ const aboutContainer = document.querySelector('#about-container');
 
 if (aboutContainer) {
   aboutContainer.innerHTML = renderAbout();
+
+  // Inicializar los iconos del About
+  if (window.lucide) {
+    window.lucide.createIcons({
+      attrs: {
+        'stroke-width': 1.7
+      }
+    });
+  }
 }
 
 /* ==========================================
-   CARD SLIDER
+   PRODUCTOS
    ========================================== */
 
-const sliderContainer = document.querySelector('#slider');
+// Carrusel de productos
+renderCardSlider('#card-slider', 'new-arrivals');
 
-if (sliderContainer) {
-  import('./components/CardSlider.js').then(({ renderCardSlider }) => {
-    sliderContainer.innerHTML = renderCardSlider();
-  }).catch(error => {
-    console.error('Error al cargar Card Slider:', error);
-  });
-}
+// Categorías
+renderCategorias('#categorias');
+
+// Slider de pestañas
+renderTabsSlider('#tabs-slider');
+
+// Cuadrícula de productos
+renderProductGrid('#product-grid');
