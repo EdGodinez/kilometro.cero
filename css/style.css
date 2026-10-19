@@ -1,9 +1,39 @@
-@import url(components/cardsslider.css);
-@import url(components/header.css);
-@import url(components/footer.css);
-@import url(components/contact.css);
+/* ==========================================
+   KILÓMETRO CERO - ESTILOS GLOBALES
+   ========================================== */
 
-*{
-    padding: 0;
-    margin: 0;
+/* Tipografías */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@700&display=swap');
+
+/* Componentes */
+@import url("./components/cardsSlider.css");
+@import url("./components/header.css");
+@import url("./components/footer.css");
+@import url("./components/hero.css");
+
+/* ==========================================
+   RESET CSS
+   ========================================== */
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* ==========================================
+   VARIABLES GLOBALES
+   ========================================== */
+
+:root {
+  /* Tipografías */
+  --font-heading: 'Space Grotesk', sans-serif;
+  --font-body: 'Inter', sans-serif;
+
+  /* Colores */
+  --color-bg: #0a0a0a;
+  --color-text: #ffffff;
+  --color-muted: #cfcfcf;
+  --color-accent: #d7ff00;
+  --color-light: #f5f5f5;
 }

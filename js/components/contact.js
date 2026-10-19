@@ -63,12 +63,12 @@ export function renderContact() {
 
                 <div class="contact-card">
                     <span class="contact-card-label">WhatsApp:</span>
-                    <span class="contact-card-value">[+52 00 0000 0000]</span>
+                    <span class="contact-card-value">[+52 44 1234 5678]</span>
                 </div>
 
                 <div class="contact-card">
-                    <span class="contact-card-label">Horario:</span>
-                    <span class="contact-card-value">[Lun a Vie · 00:00 – 00:00]</span>
+                    <span class="contact-card-label">Horario dea atención:</span>
+                    <span class="contact-card-value">[Lun a Vie · 09:00 – 19:00]</span>
                 </div>
 
                 <div class="contact-social">
