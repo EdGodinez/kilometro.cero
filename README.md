@@ -9,12 +9,15 @@
 ## 🎨 Estética & Diseño (Light Mode)
 KM.0 adopta una identidad visual técnica y limpia de alto contraste, utilizando un sistema de diseño basado en tokens modulares:
 
-* **Fondo Principal (`#FFFFFF`):** Blanco puro que transmite amplitud, frescura y ligereza.
-* **Superficies & Cards (`#F4F4F5`):** Gris claro elevado para contenedores y tarjetas de producto.
-* **Bordes & Estructura (`#E4E4E7`):** Líneas divisorias sutiles.
-* **Texto Primario (`#0A0A0A`):** Negro profundo para títulos y máxima legibilidad.
-* **Texto Secundario (`#71717A`):** Gris medio para descripciones y especificaciones técnicas.
-* **Acento Neón (`#CCFF00`):** Verde lima vibrante para CTAs de alto impacto, badges (`NEW`) y detalles del logo (`.0`).
+## 🎨 Estética & Diseño (Dark Mode)
+KM.0 adopta una identidad visual técnica, futurista y de alto contraste en modo oscuro, utilizando un sistema de diseño basado en tokens modulares:
+
+* **Fondo Principal (`#0A0A0A`):** Negro profundo/azabache que transmite elegancia y estilo técnico deportivo.
+* **Superficies & Cards (`#141414`):** Gris oscuro elevado para contenedores y tarjetas de producto.
+* **Bordes & Estructura (`#262626`):** Líneas divisorias y marcos sutiles.
+* **Texto Primario (`#FFFFFF`):** Blanco puro para títulos y máxima legibilidad sobre fondo oscuro.
+* **Texto Secundario (`#A1A1AA`):** Gris claro/plata para descripciones y especificaciones técnicas.
+* **Acento Neón (`#CCFF00`):** Verde lima neón vibrante para CTAs de alto impacto, badges (`NEW`) y el punto del logo (`.0`).
 
 ---
 
