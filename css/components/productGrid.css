@@ -22,7 +22,7 @@
    ========================================================== */
 .productos__cabecera{
     position: relative;
-    isolation: isolate; 
+    isolation: isolate;
     padding: clamp(120px, 16vw, 240px) 5% 0;
     text-align: center;
     background-color: #000;

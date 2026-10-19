@@ -1,14 +1,19 @@
+
 /* ==========================================
    KILÓMETRO CERO - ESTILOS GLOBALES
    ========================================== */
 
-/* Tipografías (los @import siempre van antes de cualquier otra regla) */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@700;800&display=swap');
+/* Tipografías */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@700&display=swap');
 
-/* Componentes */
+/* ==========================================
+   COMPONENTES
+   ========================================== */
+
 @import url('./components/header.css');
 @import url('./components/footer.css');
 @import url('./components/hero.css');
+@import url('./components/about.css');
 @import url('./components/cardsSlider.css');
 @import url('./components/categorias.css');
 @import url('./components/tabsSlider.css');
@@ -39,7 +44,7 @@
   --color-bg: #0a0a0a;
   --color-text: #ffffff;
   --color-muted: #cfcfcf;
-  --color-accent: #d7ff00;
+  --color-accent: #ccff00;
   --color-light: #f5f5f5;
 }
 
@@ -53,7 +58,7 @@ body {
   color: var(--color-text);
 }
 
-/* Contenedor centrado que usan todas las secciones */
+/* Contenedor compartido */
 .max-container {
   width: 90%;
   max-width: 1800px;

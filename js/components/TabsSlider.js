@@ -80,7 +80,6 @@ export async function renderTabsSlider(selector) {
     // 2. Descarga los productos y pinta la estructura (con el track vacío)
     const productos = await cargarProductos(RUTA_PRODUCTOS);
     contenedor.innerHTML = plantilla();
-    
 
     // 3. Guarda los elementos que se van a usar
     const tabs = contenedor.querySelectorAll('.tabs-slider__tab');
