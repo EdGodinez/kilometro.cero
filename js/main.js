@@ -1,11 +1,13 @@
-
 /* ==========================================
    KILÓMETRO CERO - MAIN JS
    ========================================== */
 
 /* Importación de componentes */
-import { renderCardSlider } from './components/CardSlider.js';
 import { renderHero } from './components/hero.js';
+import { renderCardSlider } from './components/CardSlider.js';
+import { renderCategorias } from './components/Categorias.js';
+import { renderTabsSlider } from './components/TabsSlider.js';
+import { renderProductGrid } from './components/ProductGrid.js';
 
 /* ==========================================
    HERO
@@ -18,11 +20,12 @@ if (heroContainer) {
 }
 
 /* ==========================================
-   CARD SLIDER
+   PRODUCTOS
+   Cada función se sale sola si su contenedor
+   no existe en la página (index.html o productos.html).
    ========================================== */
 
-const sliderContainer = document.querySelector('#slider');
-
-if (sliderContainer) {
-  sliderContainer.innerHTML = renderCardSlider();
-}
+renderCardSlider('#card-slider', 'new-arrivals');
+renderCategorias('#categorias');
+renderTabsSlider('#tabs-slider');
+renderProductGrid('#product-grid');
