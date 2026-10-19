@@ -1,0 +1,220 @@
+/* ===== Pagina completa ===== */
+.contact-page {
+  background-color: #0A0A0A;
+  color: #FFFFFF;
+  font-family: 'Inter', sans-serif;
+}
+
+/* ===== Parte de arriba (hero) ===== */
+/* Aqui va la foto de fondo con una capa oscura encima */
+.contact-hero {
+  background-image: linear-gradient(rgba(10, 10, 10, 0.6), rgba(10, 10, 10, 0.75)), url('../../img/man-sportswear-running-road.jpg');
+  background-size: cover;
+  background-position: center 12%;
+  padding-top: 120px;
+  padding-bottom: 64px;
+}
+
+/* Este cuadro centra el texto y lo alinea con el formulario */
+.contact-hero-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+.contact-kicker {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+  margin-bottom: 12px;
+}
+
+/* Titulo grande en verde neon */
+.contact-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 110px;
+  font-weight: 800;
+  line-height: 1;
+  color: #CCFF00;
+}
+
+.contact-subtitle {
+  color: #A1A1AA;
+  font-size: 15px;
+  line-height: 1.5;
+  margin-top: 16px;
+  max-width: 460px;
+}
+
+/* ===== Contenedor de las 2 columnas ===== */
+.contact-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 64px 32px 80px 32px;
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 48px;
+}
+
+/* ===== Columna 1: formulario ===== */
+.contact-heading {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 48px;
+  font-weight: 800;
+  line-height: 1;
+  margin-bottom: 24px;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* nombre y correo uno al lado del otro */
+.contact-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.contact-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* titulos pequeños verdes (NOMBRE, CORREO...) */
+.contact-label {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  color: #CCFF00;
+}
+
+/* cajas donde se escribe */
+.contact-input {
+  height: 48px;
+  padding: 0 14px;
+  background-color: #0D0D0D;
+  color: #FFFFFF;
+  border: 1px solid #404040;
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+}
+
+.contact-textarea {
+  height: 140px;
+  padding: 14px;
+}
+
+.contact-input::placeholder {
+  color: #A1A1AA;
+}
+
+/* cuando haces click en una caja, el borde se pone verde */
+.contact-input:focus {
+  outline: none;
+  border-color: #CCFF00;
+}
+
+/* boton verde */
+.contact-btn {
+  width: 200px;
+  height: 48px;
+  background-color: #CCFF00;
+  color: #000000;
+  border: none;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.contact-btn:hover {
+  opacity: 0.85;
+}
+
+/* mensaje de gracias */
+.contact-status {
+  color: #CCFF00;
+  font-size: 13px;
+}
+
+/* ===== Columna 2: datos de contacto ===== */
+.contact-info-col {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-top: 72px; /* baja las tarjetas para alinearlas con los campos del formulario */
+}
+
+/* tarjetas blancas */
+.contact-card {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  background-color: #FFFFFF;
+  color: #000000;
+  border-radius: 16px;
+  padding: 20px 24px;
+}
+
+.contact-card-label {
+  font-size: 12px;
+  color: #444444;
+}
+
+.contact-card-value {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+/* botones de redes sociales */
+.contact-social {
+  display: flex;
+  gap: 12px;
+}
+
+.contact-social-btn {
+  padding: 14px 18px;
+  background-color: #111111;
+  color: #FFFFFF;
+  border: 1px solid #404040;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-decoration: none;
+}
+
+.contact-social-btn:hover {
+  color: #CCFF00;
+  border-color: #CCFF00;
+}
+
+/* ===== Pantallas pequeñas (celular) ===== */
+/* Cuando la pantalla mide 800px o menos, las columnas pasan una debajo de otra */
+@media (max-width: 800px) {
+  .contact-container {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-row {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-info-col {
+    padding-top: 0;
+  }
+
+  .contact-title {
+    font-size: 64px;
+  }
+
+  .contact-heading {
+    font-size: 36px;
+  }
+}
