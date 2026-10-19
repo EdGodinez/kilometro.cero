@@ -1,0 +1,335 @@
+/* ==========================================================
+   SECCIÓN COMPLETA (anuncio + carrusel)
+   --visibles   = cuántas cards se ven a la vez
+   --separacion = espacio entre cards
+   --card-ancho = ancho de cada card, calculado para que las
+                  cards visibles llenen el carrusel exacto.
+                  (100cqw = ancho del contenedor .new-arrivals__slider)
+   En los media queries solo se cambian --visibles y --separacion.
+   ========================================================== */
+.new-arrivals{
+    --visibles: 3;
+    --separacion: 30px;
+    --card-ancho: calc((100cqw - (var(--visibles) - 1) * var(--separacion)) / var(--visibles));
+
+    display: flex;
+    justify-content: center;
+    align-items: stretch; /* el anuncio se estira a la altura del carrusel */
+    gap: var(--separacion);
+    padding: 50px 0;
+    font-family: var(--font-body);
+}
+
+/* ==========================================================
+   ANUNCIO (fijo, no se mueve con el carrusel)
+   ========================================================== */
+
+/* Recuadro con imagen de fondo y texto centrado encima.
+   El ancho es proporcional (28%) con un mínimo y un máximo,
+   así nunca le quita demasiado espacio al carrusel. */
+.new-arrivals__banner{
+    width: clamp(280px, 28%, 450px);
+    min-height: 420px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex-shrink: 0;
+    gap: 16px;
+    padding: 24px;
+    color: #fff;
+    text-align: center;
+    background: #111 url('//mettarunninghouse.com/cdn/shop/files/1080x1920-01.jpg?v=1790280223&width=1080') center / cover no-repeat;
+}
+
+/* Texto chico de arriba ("METTA") */
+.new-arrivals__marca{
+    font-size: clamp(0.8rem, 1vw, 0.9rem);
+    letter-spacing: 1px;
+}
+
+/* Título grande ("New Arrivals") */
+.new-arrivals__titulo{
+    margin: 0;
+    font-family: var(--font-heading);
+    font-size: clamp(2.25rem, 3.5vw, 3.5rem);
+    line-height: 1;
+}
+
+/* Botón blanco redondeado ("Ver todo") */
+.new-arrivals__boton{
+    margin-top: 16px;
+    padding: 15px 35px;
+    border-radius: 50px;
+    background-color: #fff;
+    color: #000;
+    font-size: clamp(0.9rem, 1vw, 1rem);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.new-arrivals__boton:hover{
+    background-color: #ccff00;
+}
+
+/* ==========================================================
+   CARRUSEL (lo único que se desplaza)
+   ========================================================== */
+
+/* Contenedor del carrusel.
+   - position: relative  -> referencia para las flechas
+   - min-width: 0        -> permite que se encoja y no estire la página
+   - container-type      -> habilita las unidades cqw para calcular
+                            el ancho de las cards */
+.new-arrivals__slider{
+    position: relative;
+    flex: 1;
+    min-width: 0;
+    container-type: inline-size;
+}
+
+/* Fila de cards con scroll horizontal y sin barra visible.
+   scroll-snap acomoda cada card al inicio al desplazarse. */
+.new-arrivals__track{
+    display: flex;
+    gap: var(--separacion);
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+}
+
+/* Oculta la barra de scroll en Chrome, Edge y Safari */
+.new-arrivals__track::-webkit-scrollbar{
+    display: none;
+}
+
+/* ==========================================================
+   FLECHAS (siempre visibles, excepto al llegar al inicio o final)
+   ========================================================== */
+
+/* Botón redondo negro, centrado sobre la imagen
+   (mitad del ancho de la card, porque la imagen es cuadrada) */
+.new-arrivals__flecha{
+    position: absolute;
+    top: calc(var(--card-ancho) / 2);
+    transform: translateY(-50%);
+    z-index: 2;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    border-radius: 50%;
+    background-color: black;
+    color: #fff;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+.new-arrivals__flecha svg{
+    width: 20px;
+    height: 20px;
+}
+
+/* Flecha izquierda, en el borde izquierdo del carrusel */
+.new-arrivals__flecha--prev{
+    left: 0;
+}
+
+/* Flecha derecha, en el borde derecho del carrusel */
+.new-arrivals__flecha--next{
+    right: 0;
+}
+
+/* Cuando no hay más cards hacia ese lado (JS pone "disabled")
+   la flecha se esconde y no se puede tocar */
+.new-arrivals__flecha:disabled{
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* ==========================================================
+   CARD DE PRODUCTO
+   ========================================================== */
+
+/* Tarjeta completa. El ancho viene de --card-ancho, así las
+   cards visibles siempre llenan el carrusel sin desbordarse. */
+.card{
+    flex: 0 0 380px; /* respaldo para navegadores sin soporte de cqw */
+    flex: 0 0 var(--card-ancho);
+    min-width: 0;
+    scroll-snap-align: start;
+}
+
+/* Caja de la imagen: cuadrada, y las dos fotos (normal y hover)
+   se encilman aquí una sobre otra */
+.card__media{
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+}
+
+/* Las dos imágenes ocupan toda la caja.
+   object-fit: contain muestra el producto completo sin recortarlo. */
+.card__imagen{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background-color: #fff;
+    transition: opacity 0.3s ease;
+}
+
+/* La imagen del hover empieza invisible */
+.card__imagen--hover{
+    opacity: 0;
+}
+
+/* Etiqueta "Nuevo" arriba a la izquierda de la imagen */
+.card__etiqueta{
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    z-index: 2;
+    padding: 4px 12px;
+    border: 1px solid #e5e5e5;
+    border-radius: 50px;
+    background-color: #fff;
+    color: #111;
+    font-size: 0.75rem;
+}
+
+/* Al pasar el mouse aparece la segunda imagen
+   (solo en dispositivos con mouse, para que no se quede "pegada" en táctil) */
+@media (hover: hover){
+    .card:hover .card__imagen--hover{
+        opacity: 1;
+    }
+}
+
+/* Zona de texto debajo de la imagen */
+.card__info{
+    padding-top: 16px;
+}
+
+/* Marca del producto, gris y chica */
+.card__marca{
+    margin: 0 0 4px;
+    font-size: clamp(0.75rem, 0.9vw, 0.8rem);
+    color: #ccff00;
+}
+
+/* Nombre: máximo 2 líneas y altura reservada,
+   así el precio queda alineado en todas las cards.
+   Se fuerza la fuente de texto porque los h3 usan la de títulos
+   si la página define una regla global para h1-h6. */
+.card__nombre{
+    margin: 0 0 8px;
+    font-family: var(--font-body);
+    font-size: clamp(0.9rem, 1vw, 0.95rem);
+    font-weight: 400;
+    line-height: 1.4;
+    min-height: 2.8em;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    color: #fff;
+}
+
+/* Precio */
+.card__precio{
+    margin: 0;
+    font-size: clamp(0.85rem, 1vw, 0.9rem);
+    color: #ccff00;
+}
+
+/* ==========================================================
+   LAPTOP CHICA (1025px a 1280px)
+   Anuncio al lado, pero con 2 cards para que no queden diminutas.
+   ========================================================== */
+@media (max-width: 1280px){
+    .new-arrivals{
+        --visibles: 2;
+    }
+}
+
+/* ==========================================================
+   TABLET (hasta 1024px)
+   El anuncio pasa ARRIBA a todo el ancho y el carrusel abajo.
+   Se ven 3 cards por slide.
+   ========================================================== */
+@media (max-width: 1024px){
+    .new-arrivals{
+        --visibles: 3;
+        --separacion: 24px;
+        flex-direction: column;
+        align-items: stretch;
+        padding: 40px 0;
+    }
+
+    /* Franja de ancho completo (flex: none para que la altura
+       dependa del contenido y no del flex del contenedor) */
+    .new-arrivals__banner{
+        width: 100%;
+        flex: none;
+        min-height: clamp(240px, 38vw, 340px);
+    }
+
+    .new-arrivals__slider{
+        width: 100%;
+        flex: none;
+    }
+}
+
+/* ==========================================================
+   TABLET VERTICAL (hasta 767px)
+   Máximo 2 cards por slide.
+   ========================================================== */
+@media (max-width: 767px){
+    .new-arrivals{
+        --visibles: 2;
+        --separacion: 16px;
+        padding: 32px 0;
+    }
+
+    .new-arrivals__flecha{
+        width: 44px;
+        height: 44px;
+    }
+}
+
+/* ==========================================================
+   MÓVIL (hasta 567px)
+   Una sola card por slide, a todo el ancho del carrusel.
+   Las flechas se meten 8px para no quedar pegadas al borde.
+   ========================================================== */
+@media (max-width: 567px){
+    .new-arrivals{
+        --visibles: 1;
+        padding: 24px 0;
+        gap: 20px;
+    }
+
+    .new-arrivals__banner{
+        min-height: 240px;
+        gap: 12px;
+    }
+
+    .new-arrivals__boton{
+        margin-top: 8px;
+        padding: 14px 28px;
+    }
+
+    .new-arrivals__flecha--prev{
+        left: 8px;
+    }
+
+    .new-arrivals__flecha--next{
+        right: 8px;
+    }
+}
