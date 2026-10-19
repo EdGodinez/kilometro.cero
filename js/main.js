@@ -3,12 +3,12 @@
    KILÓMETRO CERO - MAIN JS
    ========================================== */
 
-/* Importación de componentes */
-import { renderCardSlider } from './components/CardSlider.js';
+/* Importaciones */
 import { renderHero } from './components/hero.js';
+import { renderAbout } from './components/about.js';
 
 /* ==========================================
-   HERO
+   HERO - INDEX
    ========================================== */
 
 const heroContainer = document.querySelector('#hero-container');
@@ -18,11 +18,25 @@ if (heroContainer) {
 }
 
 /* ==========================================
+   ABOUT - ABOUT.HTML
+   ========================================== */
+
+const aboutContainer = document.querySelector('#about-container');
+
+if (aboutContainer) {
+  aboutContainer.innerHTML = renderAbout();
+}
+
+/* ==========================================
    CARD SLIDER
    ========================================== */
 
 const sliderContainer = document.querySelector('#slider');
 
 if (sliderContainer) {
-  sliderContainer.innerHTML = renderCardSlider();
+  import('./components/CardSlider.js').then(({ renderCardSlider }) => {
+    sliderContainer.innerHTML = renderCardSlider();
+  }).catch(error => {
+    console.error('Error al cargar Card Slider:', error);
+  });
 }
