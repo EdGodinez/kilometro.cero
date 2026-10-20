@@ -12,6 +12,8 @@ import { renderHero } from './components/hero.js';
 import { renderFooter } from './components/footer.js';
 import { renderContact, initContact } from './components/contact.js';
 import { renderAbout } from './components/about.js';
+// Importación del Carrito
+import { renderCarrito, initCarritoLogica } from './components/carrito.js';
 
 // Componentes de productos
 import { renderCardSlider } from './components/CardSlider.js';
@@ -95,3 +97,20 @@ renderTabsSlider('#tabs-slider');
 
 // Cuadrícula de productos
 renderProductGrid('#product-grid');
+
+/* ==========================================
+   CARRITO DE COMPRAS
+   ========================================== */
+
+// 1. Crear un contenedor para el carrito
+const carritoContainer = document.createElement('div');
+carritoContainer.id = 'carrito-container';
+
+// 2. Inyectar el HTML del carrito dentro de ese contenedor
+carritoContainer.innerHTML = renderCarrito();
+
+// 3. Agregar el contenedor al final del body
+document.body.appendChild(carritoContainer);
+
+// 4. Inicializar la lógica de los clics (después de agregar el HTML)
+initCarritoLogica();
