@@ -96,7 +96,7 @@ function plantilla(productos) {
         <!-- Anuncio: fuera del carrusel, por eso no se mueve -->
         <div class="new-arrivals__banner">
             <span class="new-arrivals__marca">METTA</span>
-            <h2 class="new-arrivals__titulo">New Arrivals</h2>
+            <h2 class="new-arrivals__titulo">Novedades</h2>
             <a class="new-arrivals__boton" href="productos.html?categoria=ropa">Ver todo ↗</a>
         </div>
 

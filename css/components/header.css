@@ -25,6 +25,10 @@
     letter-spacing: 1px;
 }
 
+.nav-logo a{
+    color: #FFFFFF;
+    text-decoration: none;
+}
 .dot-neon { color: #D4FF00; }
 
 .nav-links {

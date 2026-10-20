@@ -25,11 +25,11 @@ export function renderHero() {
         </p>
 
         <div class="hero-buttons">
-          <a href="#hombre" class="hero-btn">
+          <a href="./productos.html?genero=hombre" class="hero-btn">
             Para él <span aria-hidden="true">→</span>
           </a>
 
-          <a href="#mujer" class="hero-btn">
+          <a href="./productos.html?genero=mujer" class="hero-btn">
             Para ella <span aria-hidden="true">→</span>
           </a>
         </div>

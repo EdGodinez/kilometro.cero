@@ -4,37 +4,35 @@ export function renderNavbar() {
     return `
         <nav class="navbar">
             <!-- Logo -->
-            <div class="nav-logo">KM<span class="dot-neon">.</span>0</div>
+            <div class="nav-logo"><a href="./index.html">KM<span class="dot-neon">.</span>0</a></div>
 
             <!-- Enlaces Centrales -->
             <ul class="nav-links" id="nav-links">
                 <li class="nav-item has-mega-menu">
-                    <a href="#" class="active-link">Productos</a>
+                    <a href="./productos.html?genero=hombre" class="">HOMBRE</a>
                     <div class="mega-menu">
-                        <div class="mega-menu-column">
-                            <h3 class="mega-menu-title">Para Hombre:</h3>
                             <ul class="mega-menu-list">
-                                <li><a href="#">Calzado</a></li>
-                                <li><a href="#">Ropa</a></li>
-                                <li><a href="#">Accesorios</a></li>
+                                <li><a href="./productos.html?genero=hombre&categoria=calzado">Calzado</a></li>
+                                <li><a href="./productos.html?genero=hombre&categoria=ropa">Ropa</a></li>
+                                <li><a href="./productos.html?genero=hombre&categoria=accesorios">Accesorios</a></li>
                             </ul>
-                        </div>
-                        <div class="mega-menu-divider"></div>
-                        <div class="mega-menu-column">
-                            <h3 class="mega-menu-title">Para Mujer:</h3>
-                            <ul class="mega-menu-list">
-                                <li><a href="#">Calzado</a></li>
-                                <li><a href="#">Ropa</a></li>
-                                <li><a href="#">Accesorios</a></li>
-                            </ul>
-                        </div>
                     </div>
                 </li>
+                <li class="nav-item has-mega-menu">
+                        <a href="./productos.html?genero=mujer" class="">MUJER</a>
+                        <div class="mega-menu">
+                                <ul class="mega-menu-list">
+                                    <li><a href="./productos.html?genero=mujer&categoria=calzado">Calzado</a></li>
+                                    <li><a href="./productos.html?genero=mujer&categoria=ropa">Ropa</a></li>
+                                    <li><a href="./productos.html?genero=mujer&categoria=accesorios">Accesorios</a></li>
+                                </ul>
+                        </div>
+                    </li>
                 <li class="nav-item">
-                    <a href="#" id="link-nosotros">SOBRE NOSOTROS</a>
+                    <a href="./about.html">NOSOTROS</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" id="link-contacto">CONTACTO</a>
+                    <a href="./contact.html">CONTACTO</a>
                 </li>
             </ul>
 
@@ -57,25 +55,6 @@ export function renderNavbar() {
                 <button id="mobile-menu-btn" class="icon-btn mobile-toggle" aria-label="Menú">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
                 </button>
-            </div>
-
-            <!-- Modales Ocultos -->
-            <div id="modal-nosotros" class="modal-overlay">
-                <div class="modal-content">
-                    <button class="close-btn">&times;</button>
-                    <h2>SOBRE NOSOTROS</h2>
-                    <p>Toda gran carrera comienza en el KM.0. Somos el punto de partida para tu camino, ofreciendo equipamiento de alto rendimiento para alcanzar tus metas.</p>
-                </div>
-            </div>
-
-            <div id="modal-contacto" class="modal-overlay">
-                <div class="modal-content">
-                    <button class="close-btn">&times;</button>
-                    <h2>CONTACTO</h2>
-                    <p><strong>Email:</strong> soporte@km0.com</p>
-                    <p><strong>Teléfono:</strong> +52 555 123 4567</p>
-                    <p><strong>Horario:</strong> Lunes a Viernes, 9:00 AM - 6:00 PM</p>
-                </div>
             </div>
         </nav>
     `;
