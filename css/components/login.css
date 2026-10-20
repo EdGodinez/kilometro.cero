@@ -1,0 +1,228 @@
+
+/* ==========================================
+   KILÓMETRO CERO - LOGIN
+   ========================================== */
+
+/* Contenedor principal */
+.login-section {
+    min-height: 100vh;
+    min-height: 100svh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 7rem 1.5rem 4rem;
+
+    background-color: var(--color-bg, #000);
+    color: var(--color-text, #fff);
+    font-family: var(--font-body, sans-serif);
+}
+
+/* Formulario */
+.login-container {
+    width: 100%;
+    max-width: 440px;
+
+    padding: 2.5rem;
+
+    background: #101010;
+    border: 1px solid #333;
+}
+
+/* Título */
+.login-container h1 {
+    margin-bottom: 0.75rem;
+
+    font-family: var(--font-heading, sans-serif);
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 700;
+    line-height: 1.1;
+    text-transform: uppercase;
+    color: var(--color-text, #fff);
+}
+
+/* Subtítulo */
+.login-container > p {
+    margin-bottom: 2rem;
+    font-size: 0.95rem;
+    color: var(--color-muted, #aaa);
+}
+
+/* Formulario */
+#login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* Campos */
+.login-container .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.login-container .form-group label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* Inputs */
+.login-container .form-group input {
+    width: 100%;
+    padding: 0.95rem 1rem;
+
+    background: #181818;
+    border: 1px solid #444;
+    border-radius: 0;
+
+    color: #fff;
+    font-family: inherit;
+    font-size: 1rem;
+
+    transition: border-color 0.2s ease;
+}
+
+.login-container .form-group input::placeholder {
+    color: #888;
+}
+
+.login-container .form-group input:focus {
+    outline: none;
+    border-color: var(--color-accent, #ccff00);
+}
+
+/* Botón principal */
+.login-button {
+    width: 100%;
+    padding: 1rem;
+
+    background: var(--color-accent, #ccff00);
+    color: #000;
+
+    border: 2px solid var(--color-accent, #ccff00);
+    border-radius: 0;
+
+    font-family: var(--font-body, sans-serif);
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.25s ease,
+        color 0.25s ease;
+}
+
+.login-button:hover {
+    background: transparent;
+    color: var(--color-accent, #ccff00);
+}
+
+.login-button:focus-visible {
+    outline: 2px solid var(--color-accent, #ccff00);
+    outline-offset: 4px;
+}
+
+/* Mensajes de autenticación */
+#login-message {
+    margin: 0;
+    font-size: 0.85rem;
+    text-align: center;
+    color: #ff7676;
+}
+
+#login-message:empty {
+    display: none;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .login-section {
+        padding: 6rem 1rem 3rem;
+    }
+
+    .login-container {
+        padding: 2rem 1.5rem;
+    }
+}
+
+/* Accesibilidad */
+@media (prefers-reduced-motion: reduce) {
+    .login-button,
+    .login-container .form-group input {
+        transition: none;
+    }
+}
+
+
+/* ==========================================
+   ENCABEZADO DEL LOGIN
+   ========================================== */
+
+.login-header {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+/* Identificador superior */
+.login-kicker {
+    display: block;
+    margin-bottom: 1rem;
+
+    font-family: var(--font-body, sans-serif);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+
+    color: var(--color-accent, #ccff00);
+}
+
+/* Título */
+.login-header h1 {
+    margin-bottom: 0.75rem;
+
+    font-family: var(--font-heading, sans-serif);
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 700;
+    line-height: 1.1;
+    text-transform: uppercase;
+
+    color: var(--color-text, #fff);
+}
+
+/* Subtítulo */
+.login-header p {
+    margin: 0;
+    font-size: 0.95rem;
+    color: var(--color-muted, #aaa);
+}
+
+
+/* Enlace al registro */
+.login-register-link {
+    margin-top: 1.75rem;
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--color-muted, #aaa);
+}
+
+.login-register-link a {
+    color: var(--color-accent, #ccff00);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.login-register-link a:hover {
+    text-decoration: underline;
+}
+
+.login-register-link a:focus-visible {
+    outline: 2px solid var(--color-accent, #ccff00);
+    outline-offset: 4px;
+}

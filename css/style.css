@@ -1,0 +1,233 @@
+/* ==========================================
+   KILÓMETRO CERO - ESTILOS GLOBALES
+   ========================================== */
+
+/* Tipografías */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@700&display=swap');
+
+/* ==========================================
+   COMPONENTES
+   ========================================== */
+
+@import url('./components/header.css');
+@import url('./components/footer.css');
+@import url('./components/hero.css');
+@import url('./components/about.css');
+@import url('./components/cardsSlider.css');
+@import url('./components/categorias.css');
+@import url('./components/tabsSlider.css');
+@import url('./components/productGrid.css');
+@import url('./components/contact.css');
+@import url("./components/auth.css");
+@import url("./components/login.css");
+@import url("./components/register.css");
+@import url('./components/benefits.css');
+@import url('./components/productDetail.css');
+@import url(./components/Carritoitems.css);
+@import url('./components/banner.css');
+
+
+/* ==========================================
+   RESET CSS
+   ========================================== */
+
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* ==========================================
+   VARIABLES GLOBALES
+   ========================================== */
+
+:root {
+  /* Tipografías */
+  --font-heading: 'Space Grotesk', sans-serif;
+  --font-body: 'Inter', sans-serif;
+
+  /* Colores */
+  --color-bg: #0a0a0a;
+  --color-text: #ffffff;
+  --color-muted: #cfcfcf;
+  --color-accent: #ccff00;
+  --color-light: #f5f5f5;
+}
+
+/* ==========================================
+   BASE
+   ========================================== */
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+}
+
+/* Contenedor compartido */
+.max-container {
+  width: 90%;
+  max-width: 1800px;
+  margin: 0 auto;
+}
+
+
+/* --- Estilos Generales --- */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* --- Botón Flotante del Carrito --- */
+.btn-carrito {
+    position: fixed;
+    top: 90px; /* <-- CORRECCIÓN: Se aumentó de 20px a 90px para bajar el ícono y evitar el empalme */
+    right: 20px;
+    background-color: #000; 
+    color: #fff;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icono-bolsa {
+    width: 24px;
+    height: 24px;
+}
+
+/* --- Overlay oscuro --- */
+.overlay-carrito {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 999; /* Por debajo de la barra, por encima del resto */
+}
+
+.overlay-carrito.activo {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* --- Barra Lateral --- */
+.barra-carrito {
+    position: fixed;
+    top: 0;
+    right: -450px; /* Escondido a la derecha por defecto */
+    width: 100%;
+    max-width: 400px; /* Ancho de la barra */
+    height: 100vh;
+    background-color: #fff;
+    box-shadow: -4px 0 15px rgba(0,0,0,0.1);
+    transition: right 0.3s ease;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+}
+
+.barra-carrito.abierto {
+    right: 0; /* Aparece al agregar esta clase */
+}
+
+/* --- Cabecera de la barra --- */
+.carrito-header {
+    background-color: #efefef; 
+    padding: 15px 20px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.btn-cerrar {
+    background: none;
+    border: none;
+    font-size: 15px;
+    color: #555;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0;
+}
+
+.btn-cerrar:hover {
+    color: #000;
+}
+
+/* --- Cuerpo del carrito --- */
+.carrito-body {
+    flex: 1;
+    padding: 25px 30px;
+    overflow-y: auto;
+}
+
+.carrito-body h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-top: 0;
+    margin-bottom: 25px;
+    color: #111;
+}
+
+.mensaje-vacio {
+    color: #333;
+    font-size: 15px;
+    margin: 0;
+}
+
+/* --- Pie del Carrito (Botón y Logos) --- */
+.carrito-footer {
+    padding: 25px 30px;
+    border-top: 1px solid #eaeaea;
+    background-color: #fff;
+}
+
+.btn-finalizar {
+    width: 100%;
+    padding: 15px;
+    background-color: #222;
+    color: #fff;
+    border: none;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    transition: background 0.2s;
+}
+
+.btn-finalizar:hover {
+    background-color: #000;
+}
+
+.metodos-pago {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.metodos-pago img {
+    height: 20px; /* Tamaño de los logos */
+    object-fit: contain;
+    filter: grayscale(20%);
+    opacity: 0.8;
+    transition: all 0.3s;
+}
+
+.metodos-pago img:hover {
+    filter: grayscale(0%);
+    opacity: 1;
+    }
