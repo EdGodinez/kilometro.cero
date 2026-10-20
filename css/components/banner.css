@@ -1,0 +1,138 @@
+/* =================================================================
+   ESTILOS PARA EL BANNER PROMOCIONAL
+   Aquí controlamos cómo se ve, los colores, márgenes y adaptabilidad.
+   ================================================================= */
+
+.banner-wrapper {
+  margin-top: 90px;              /* Aumentamos la separación superior respecto al hero */
+  /*margin-bottom: 50px;           /* Separación inferior respecto a la siguiente sección */
+}
+
+/* TARJETA PRINCIPAL DEL BANNER */
+.banner-section {
+  position: relative;            /* Permite posicionar elementos internos de forma segura */
+  width: 100%;                   /* Ocupa el 100% del espacio disponible dentro del 'banner-wrapper' */
+  min-height: 380px;             /* Altura mínima para que la imagen luzca compacta y no muy alta */
+  margin-top: 1 rem;
+  background-size: cover;        /* Hace que la foto de fondo cubra todo el espacio sin deformarse */
+  background-position: center;   
+  background-repeat: no-repeat;  /* Evita que la foto se repita como mosaico si la pantalla es muy grande */
+  overflow: hidden;              /* Corta cualquier elemento o fondo que sobresalga de las esquinas redondeadas */
+  display: flex;                 /* Usamos Flexbox para centrar fácilmente el contenido */
+  align-items: center;           
+  justify-content: center;        
+  text-align: center;            
+  padding: 40px 24px;            
+  box-sizing: border-box;
+  color: #ffffff;                
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); /* Aplica una sombra suave debajo de la tarjeta para darle elevación */
+  font-family: var(--font-heading);          
+  
+}
+
+/*CONTENEDOR DEL TEXTO (Centrado interno) */
+.banner-content {
+  max-width: 700px;              /* Ancho máximo para que las líneas de texto no queden demasiado largas */
+  margin: 0 auto;                /* Centra el bloque dentro de la sección */
+  z-index: 2;                    /* Asegura que el texto quede por encima de las capas de fondo */
+  display: flex;
+  flex-direction: column;        /* Alinea los elementos uno debajo de otro (insignia -> título -> texto -> botones) */
+  align-items: center;           /* Centra cada elemento en el eje horizontal */
+}
+
+/* INSIGNIA / ETIQUETA SUPERIOR */
+.banner-badge {
+  display: inline-block;
+  background-color: #cdfd02;    
+  color: #111111;               
+  font-size: 11px;               
+  font-weight: 800;  
+  margin-bottom: 15px;;            
+  padding: 6px 14px;             
+  border-radius: 20px;           
+  letter-spacing: 1.5px;         
+  text-transform: uppercase;     
+}
+
+/*TÍTULO PRINCIPAL */
+.banner-title {
+  font-size: 40px;               
+  font-weight: 900;              
+  line-height: 1.1;              /* Altura de línea ajustada para que no haya mucho espacio si se divide en dos renglones */
+  letter-spacing: -0.5px;        
+  text-transform: uppercase;
+  margin: 0 0 12px 0;            
+  color: #ffffff;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7); /* Sombra oscura detrás de las letras para leer bien sobre la foto */
+}
+
+/*SUBTÍTULO / TEXTO DESCRIPTIVO */
+.banner-subtitle {
+  font-size: 16px;
+  line-height: 1.4;              /* Espaciado de lectura cómodo entre renglones */
+  color: #e0e0e0;                /* Blanco suave para diferenciarlo del título */
+  margin: 0 0 24px 0;            /* Espacio antes de los botones */
+  max-width: 580px;              /* Ancho limitado para mejorar la lectura */
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.7);
+}
+
+/*CONTENEDOR DE BOTONES */
+/*Estilo base  */
+.banner-btn {
+  display: inline-block;
+  padding: 12px 28px;            /* Tamaño del botón por dentro */
+  font-size: 13px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-decoration: none;         /* Le quita la línea subrayada por defecto de los enlaces HTML */
+  border-radius: 4px;            /* Bordes suavemente redondeados */
+  transition: all 0.3s ease;     /* Transición suave para los efectos al pasar el ratón (hover) */
+}
+
+/* Botón  */
+.banner-btn-primary {
+  background-color: #cdfd02;    
+  color: #111111;                
+}
+
+.banner-btn-primary:hover {
+  background-color: #b3e002;    
+  transform: translateY(-2px);   
+}
+
+
+/* =================================================================
+   8. ADAPTACIÓN PARA CELULARES (RESPONSIVE DESIGN)
+   Aplica solo si la pantalla mide 768 píxeles de ancho o menos.
+   ================================================================= */
+@media (max-width: 768px) {
+  .banner-wrapper {
+    margin: 40px auto 30px auto; /* Menor margen vertical en móviles */
+    padding: 0 12px;             /* Menos padding a los lados */
+  }
+
+  .banner-section {
+    min-height: 340px;           /* Reduce la altura para pantallas pequeñas */
+    padding: 30px 16px;
+    border-radius: 8px;
+  }
+
+  .banner-title {
+    font-size: 26px;             /* Reduce el tamaño del título para que no se corte */
+  }
+
+  .banner-subtitle {
+    font-size: 14px;             /* Texto un poco más pequeño */
+  }
+
+  .banner-buttons {
+    flex-direction: column;      /* Pone un botón encima del otro en celulares */
+    width: 100%;
+  }
+
+  .banner-btn {
+    width: 100%;                 /* Los botones ocupan todo el ancho del banner en móviles */
+    box-sizing: border-box;
+  }
+}

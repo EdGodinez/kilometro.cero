@@ -8,6 +8,7 @@
 
 // Componentes propios
 import { renderNavbar, initNavbarEvents } from './components/header.js';
+import { renderBanner } from './components/banner.js';
 import { renderHero } from './components/hero.js';
 import { renderFooter } from './components/footer.js';
 import { renderContact, initContact } from './components/contact.js';
@@ -32,6 +33,16 @@ const headerElement = document.querySelector('#header');
 if (headerElement) {
   headerElement.innerHTML = renderNavbar();
   initNavbarEvents();
+}
+
+/* ==========================================
+   BANNER
+   ========================================== */
+
+const bannerContainer = document.querySelector('#banner-container');
+
+if (bannerContainer) {
+  bannerContainer.innerHTML = renderBanner();
 }
 
 /* ==========================================
