@@ -1,4 +1,5 @@
 // js/components/header.js
+import { getSession, logout } from "../auth.js";
 
 export function renderNavbar() {
     return `
@@ -44,8 +45,39 @@ export function renderNavbar() {
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
                     </button>
                 </div>
-                <button class="icon-btn" aria-label="Usuario">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+
+                <!-- Contenedor de autenticación -->
+                <div id="auth-container">
+                    <a href="./login.html"
+                    class="icon-btn"
+                    aria-label="Iniciar sesión"
+                    title="Iniciar sesión">
+                        <svg width="20" height="20"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- Botón del carrito -->
+                <button class="icon-btn" aria-label="Carrito">
+                    <svg width="20" height="20"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <path d="M16 10a4 4 0 0 1-8 0"></path>
+                    </svg>
+                </button>
+
                 </button>
                 
                 <!-- NUEVO: Botón Hamburguesa (Solo se verá en celulares) -->
@@ -58,6 +90,10 @@ export function renderNavbar() {
 }
 
 export function initNavbarEvents() {
+
+    // Actualizar el navbar según la sesión
+    renderAuth();
+    
     // 1. Lógica Búsqueda
     const searchBtn = document.getElementById('search-btn');
     const searchInput = document.getElementById('search-input');
@@ -97,3 +133,96 @@ export function initNavbarEvents() {
         if (e.target === modalContacto) modalContacto.classList.remove('active');
     });
 }
+
+
+/* ==========================================
+   ESTADO DE AUTENTICACIÓN EN NAVBAR
+   ========================================== */
+
+
+export function renderAuth() {
+    const container = document.getElementById("auth-container");
+
+    if (!container) return;
+
+    const session = getSession();
+
+    // Limpiar contenido anterior
+    container.replaceChildren();
+
+    if (!session) {
+        // Usuario visitante
+        const loginLink = document.createElement("a");
+
+        loginLink.href = "./login.html";
+        loginLink.className = "icon-btn";
+        loginLink.title = "Iniciar sesión";
+        loginLink.setAttribute("aria-label", "Iniciar sesión");
+
+        loginLink.innerHTML = `
+            <i class="bx bx-user"></i>
+        `;
+
+        container.appendChild(loginLink);
+        return;
+    }
+
+    // Usuario con sesión iniciada
+    const userButton = document.createElement("button");
+    userButton.type = "button";
+    userButton.className = "icon-btn auth-user-btn";
+    userButton.setAttribute("aria-expanded", "false");
+    userButton.setAttribute("aria-controls", "auth-dropdown");
+
+    const userIcon = document.createElement("i");
+    userIcon.className = "bx bx-user-circle";
+
+    const userName = document.createElement("span");
+    userName.textContent = `Hola, ${session.nombre}`;
+
+    const arrowIcon = document.createElement("i");
+    arrowIcon.className = "bx bx-chevron-down";
+
+    userButton.append(userIcon, userName, arrowIcon);
+
+    // Menú desplegable
+    const dropdown = document.createElement("div");
+    dropdown.id = "auth-dropdown";
+    dropdown.className = "auth-dropdown";
+    dropdown.hidden = true;
+
+    const logoutButton = document.createElement("button");
+    logoutButton.type = "button";
+    logoutButton.className = "auth-logout-btn";
+    logoutButton.textContent = "Cerrar sesión";
+
+    logoutButton.addEventListener("click", logout);
+
+    dropdown.appendChild(logoutButton);
+
+    userButton.addEventListener("click", () => {
+        dropdown.hidden = !dropdown.hidden;
+        userButton.setAttribute(
+            "aria-expanded",
+            String(!dropdown.hidden)
+        );
+    });
+
+    container.append(userButton, dropdown);
+
+    // Cerrar con Escape o clic fuera
+    document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") {
+            dropdown.hidden = true;
+            userButton.setAttribute("aria-expanded", "false");
+        }
+    });
+
+    document.addEventListener("click", (event) => {
+        if (!container.contains(event.target)) {
+            dropdown.hidden = true;
+            userButton.setAttribute("aria-expanded", "false");
+        }
+    });
+}
+

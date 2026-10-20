@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Iniciar sesión | Kilómetro Cero</title>
+
+    <!-- Estilos globales -->
+    <link rel="stylesheet" href="./css/style.css">
+
+    <!-- Boxicons -->
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header id="header"></header>
+
+    <!-- Contenido principal -->
+    <main>
+        <section class="login-section">
+            <div class="login-container">
+
+
+                <!-- Encabezado del login -->
+                <div class="login-header">
+                    <span class="login-kicker">KM.0 / ACCOUNT</span>
+
+                    <h1>Iniciar sesión</h1>
+
+                    <p>Bienvenido de nuevo a Kilómetro Cero.</p>
+                </div>
+
+
+                <form id="login-form">
+
+                    <div class="form-group">
+                        <label for="email">Correo electrónico</label>
+                        <input type="email" id="email" name="email" placeholder="correo@ejemplo.com"
+                            autocomplete="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Contraseña</label>
+                        <input type="password" id="password" name="password" placeholder="Ingresa tu contraseña"
+                            autocomplete="current-password" required>
+                    </div>
+
+                    <button type="submit" class="login-button">
+                        Iniciar sesión
+                    </button>
+
+                    <p id="login-message" role="status" aria-live="polite"></p>
+
+                </form>
+                <p class="login-register-link">
+                    ¿No tienes una cuenta?
+                    <a href="./register.html">Regístrate</a>
+                </p>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer id="footer"></footer>
+
+    <!-- JavaScript -->
+    <script type="module" src="./js/main.js"></script>
+    <script type="module" src="./js/auth.js"></script>
+
+</body>
+
+</html>

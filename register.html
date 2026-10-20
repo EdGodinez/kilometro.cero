@@ -1,0 +1,136 @@
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Crear cuenta | Kilómetro Cero</title>
+
+    <!-- Estilos globales -->
+    <link rel="stylesheet" href="./css/style.css">
+
+    <!-- Boxicons -->
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+          rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header id="header"></header>
+
+    <!-- Contenido principal -->
+    <main>
+        <section class="register-section">
+            <div class="register-container">
+
+                <!-- Encabezado -->
+                <div class="register-header">
+                    <span class="register-kicker">
+                        KM.0 / REGISTER
+                    </span>
+
+                    <h1>Crear cuenta</h1>
+                    <p>Únete a Kilómetro Cero.</p>
+                </div>
+
+                <!-- Formulario -->
+                <form id="register-form">
+
+                    <!-- Nombre -->
+                    <div class="form-group">
+                        <label for="register-name">
+                            Nombre completo
+                        </label>
+
+                        <input
+                            type="text"
+                            id="register-name"
+                            name="name"
+                            placeholder="Tu nombre completo"
+                            autocomplete="name"
+                            required>
+                    </div>
+
+                    <!-- Correo -->
+                    <div class="form-group">
+                        <label for="register-email">
+                            Correo electrónico
+                        </label>
+
+                        <input
+                            type="email"
+                            id="register-email"
+                            name="email"
+                            placeholder="correo@ejemplo.com"
+                            autocomplete="email"
+                            required>
+                    </div>
+
+                    <!-- Contraseña de demostración -->
+                    <div class="form-group">
+                        <label for="register-password">
+                            Contraseña
+                        </label>
+
+                        <input
+                            type="password"
+                            id="register-password"
+                            name="password"
+                            placeholder="Ingresa una contraseña ficticia"
+                            autocomplete="new-password"
+                            minlength="8"
+                            required>
+                    </div>
+
+                    <!-- Confirmar contraseña -->
+                    <div class="form-group">
+                        <label for="register-confirm-password">
+                            Confirmar contraseña
+                        </label>
+
+                        <input
+                            type="password"
+                            id="register-confirm-password"
+                            name="confirmPassword"
+                            placeholder="Confirma la contraseña"
+                            autocomplete="new-password"
+                            minlength="8"
+                            required>
+                    </div>
+
+                    <!-- Mensajes de validación -->
+                    <p id="register-message"
+                       role="status"
+                       aria-live="polite"></p>
+
+                    <!-- Botón de registro -->
+                    <button type="submit" class="register-button">
+                        Crear cuenta
+                    </button>
+
+                </form>
+
+                <!-- Enlace al login -->
+                <p class="register-login-link">
+                    ¿Ya tienes una cuenta?
+                    <a href="./login.html">
+                        Iniciar sesión
+                    </a>
+                </p>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer id="footer"></footer>
+
+    <!-- JavaScript -->
+    <script type="module" src="./js/main.js"></script>
+    <script type="module" src="./js/auth.js"></script>
+
+</body>
+</html>

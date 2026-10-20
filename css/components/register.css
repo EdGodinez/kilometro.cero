@@ -1,0 +1,227 @@
+
+/* ==========================================
+   KILÓMETRO CERO - REGISTER
+   ========================================== */
+
+/* Contenedor principal */
+.register-section {
+    min-height: 100vh;
+    min-height: 100svh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 7rem 1.5rem 4rem;
+
+    background-color: var(--color-bg, #000);
+    color: var(--color-text, #fff);
+    font-family: var(--font-body, sans-serif);
+}
+
+/* Contenedor del formulario */
+.register-container {
+    width: 100%;
+    max-width: 440px;
+    padding: 2.5rem;
+
+    background-color: #101010;
+    border: 1px solid #333;
+}
+
+/* ==========================================
+   ENCABEZADO
+   ========================================== */
+
+.register-header {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.register-kicker {
+    display: block;
+    margin-bottom: 1rem;
+
+    font-family: var(--font-body, sans-serif);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+
+    color: var(--color-accent, #ccff00);
+}
+
+.register-header h1 {
+    margin-bottom: 0.75rem;
+
+    font-family: var(--font-heading, sans-serif);
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 700;
+    line-height: 1.1;
+    text-transform: uppercase;
+
+    color: var(--color-text, #fff);
+}
+
+.register-header p {
+    margin: 0;
+    font-size: 0.95rem;
+    color: var(--color-muted, #aaa);
+}
+
+/* ==========================================
+   FORMULARIO
+   ========================================== */
+
+#register-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+/* Grupos de campos */
+.register-container .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+/* Etiquetas */
+.register-container .form-group label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* Campos de entrada */
+.register-container .form-group input {
+    width: 100%;
+    padding: 0.95rem 1rem;
+
+    background-color: #181818;
+    border: 1px solid #444;
+    border-radius: 0;
+
+    color: #fff;
+    font-family: inherit;
+    font-size: 1rem;
+
+    transition: border-color 0.2s ease;
+}
+
+.register-container .form-group input::placeholder {
+    color: #888;
+}
+
+.register-container .form-group input:focus {
+    outline: none;
+    border-color: var(--color-accent, #ccff00);
+}
+
+/* ==========================================
+   BOTÓN DE REGISTRO
+   ========================================== */
+
+.register-button {
+    width: 100%;
+    padding: 1rem;
+
+    background-color: var(--color-accent, #ccff00);
+    color: #000;
+
+    border: 2px solid var(--color-accent, #ccff00);
+    border-radius: 0;
+
+    font-family: var(--font-body, sans-serif);
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.25s ease,
+        color 0.25s ease;
+}
+
+.register-button:hover {
+    background-color: transparent;
+    color: var(--color-accent, #ccff00);
+}
+
+.register-button:focus-visible {
+    outline: 2px solid var(--color-accent, #ccff00);
+    outline-offset: 4px;
+}
+
+/* ==========================================
+   MENSAJES DE VALIDACIÓN
+   ========================================== */
+
+#register-message {
+    margin: 0;
+    font-size: 0.85rem;
+    text-align: center;
+    color: #ff7676;
+}
+
+#register-message:empty {
+    display: none;
+}
+
+#register-message.success {
+    color: var(--color-accent, #ccff00);
+}
+
+#register-message.error {
+    color: #ff7676;
+}
+
+/* ==========================================
+   ENLACE A INICIAR SESIÓN
+   ========================================== */
+
+.register-login-link {
+    margin-top: 1.75rem;
+
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--color-muted, #aaa);
+}
+
+.register-login-link a {
+    color: var(--color-accent, #ccff00);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.register-login-link a:hover {
+    text-decoration: underline;
+}
+
+.register-login-link a:focus-visible {
+    outline: 2px solid var(--color-accent, #ccff00);
+    outline-offset: 4px;
+}
+
+/* ==========================================
+   RESPONSIVE
+   ========================================== */
+
+@media (max-width: 600px) {
+    .register-section {
+        padding: 6rem 1rem 3rem;
+    }
+
+    .register-container {
+        padding: 2rem 1.5rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .register-button,
+    .register-container .form-group input {
+        transition: none;
+    }
+}
