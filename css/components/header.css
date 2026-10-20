@@ -1,6 +1,6 @@
-
-
-
+/* ==========================================================
+   ESTILOS GENERALES Y DESKTOP
+   ========================================================== */
 .navbar * {
     box-sizing: border-box;
     margin: 0;
@@ -25,10 +25,11 @@
     letter-spacing: 1px;
 }
 
-.nav-logo a{
+.nav-logo a {
     color: #FFFFFF;
     text-decoration: none;
 }
+
 .dot-neon { color: #D4FF00; }
 
 .nav-links {
@@ -48,12 +49,11 @@
 
 .nav-item > a:hover { color: #D4FF00; }
 
-
-
 .active-link {
     color: #D4FF00 !important;
 }
 
+/* --- MEGA MENU DESKTOP --- */
 .has-mega-menu {
     position: relative;
 }
@@ -90,7 +90,6 @@
     white-space: nowrap;
 }
 
-
 .mega-menu-list {
     list-style: none; 
     padding-left: 0;
@@ -101,7 +100,6 @@
     position: relative;
     padding-left: 12px; 
 }
-
 
 .mega-menu-list li::before {
     content: "•";
@@ -124,15 +122,13 @@
     color: #D4FF00;
 }
 
-
 .mega-menu-divider {
     width: 1px;
     background-color: #222;
     margin: 0 10px;
 }
 
-
-
+/* --- ICONOS Y BÚSQUEDA --- */
 .nav-icons {
     display: flex;
     align-items: center;
@@ -176,8 +172,7 @@
 
 .icon-btn:hover { color: #D4FF00; }
 
-
-
+/* --- MODALES --- */
 .modal-overlay {
     position: fixed;
     top: 0;
@@ -237,65 +232,196 @@
 .close-btn:hover { color: #D4FF00; }
 
 
-
-
-.mobile-toggle {
+/* ==========================================================
+   ELEMENTOS EXCLUSIVOS DE MÓVIL (Ocultos en PC)
+   ========================================================== */
+.mobile-toggle,
+.mobile-nav-header,
+.mobile-only-link,
+.mobile-arrow,
+.mobile-nav-overlay {
     display: none;
 }
 
 
+/* ==========================================================
+   RESPONSIVE: VISTA MÓVIL (Hasta 850px)
+   ========================================================== */
 @media (max-width: 850px) {
+    /* Mostrar botón hamburguesa */
     .mobile-toggle {
         display: flex; 
     }
 
-    
+    /* Ocultar iconos de usuario del escritorio */
+    .desktop-auth {
+        display: none !important;
+    }
+
+    /* Reducir tamaño del buscador al activarse */
+    .search-input.active {
+        width: 110px;
+    }
+
+    /* 1. CONFIGURACIÓN DEL PANEL LATERAL */
     .nav-links {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background-color: #0A0A0A;
+        position: fixed; /* Se fija a la pantalla */
+        top: 0;
+        left: 0; /* Anclado a la izquierda */
+        width: 80%; /* Ocupa el 80% de la pantalla */
+        max-width: 320px;
+        height: 100vh;
+        background-color: #FFFFFF; /* Fondo blanco */
         flex-direction: column;
-        align-items: center;
+        justify-content: flex-start;
+        align-items: stretch;
         padding: 0;
-        max-height: 0; 
-        overflow: hidden;
-        transition: max-height 0.4s ease, padding 0.4s ease;
-        border-bottom: none;
-        z-index: 20;
+        margin: 0;
+        gap: 0;
+        z-index: 4000;
+        transform: translateX(-100%); /* Oculto a la izquierda por defecto */
+        transition: transform 0.3s ease-in-out;
+        overflow-y: auto; /* Permite scroll si hay muchos enlaces */
     }
 
-    
-    .nav-links.active {
-        padding: 20px 0;
-        max-height: 500px; 
-        border-bottom: 1px solid #222;
+    /* Clase que lo hace deslizarse a la vista */
+    .nav-links.active-sidebar {
+        transform: translateX(0);
     }
 
-    
+    /* 2. CABECERA DEL MENÚ MÓVIL (La que dice "Menú" y la "X") */
+    .mobile-nav-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 20px;
+        background-color: #F9F9F9;
+        border-bottom: 1px solid #EAEAEA;
+        color: #111111;
+        font-weight: 600;
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: 16px;
+    }
+
+    .close-menu-btn {
+        background: transparent;
+        border: none;
+        color: #111111;
+        cursor: pointer;
+        padding: 5px;
+    }
+
+    /* 3. ESTILO DE LOS ENLACES (Hombre, Mujer, Nosotros...) */
+    .nav-item {
+        width: 100%;
+        margin: 0;
+    }
+
+    .nav-item > a,
+    .mobile-only-link > a {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 18px 20px;
+        color: #111111; /* Texto oscuro sobre fondo blanco */
+        text-decoration: none;
+        font-size: 14px;
+        border-bottom: 1px solid #F0F0F0;
+    }
+
+    /* Enlaces adicionales al final (Login móvil) */
+    .mobile-only-link {
+        display: block;
+    }
+
+    .mobile-only-link > a {
+        justify-content: flex-start;
+        gap: 15px;
+    }
+
+    .separator-top {
+        border-top: 6px solid #F5F5F5;
+        margin-top: auto; /* Empuja el botón al fondo si hay espacio */
+    }
+
+    .mobile-arrow {
+        display: inline-block;
+        font-size: 18px;
+        color: #888888;
+        transition: transform 0.3s;
+    }
+
+    /* 4. COMPORTAMIENTO DE LOS SUBMENÚS (Mega menu en móvil) */
     .mega-menu {
         position: static;
         transform: none;
         flex-direction: column;
-        gap: 15px;
-        background-color: transparent;
+        gap: 0;
+        background-color: #FAFAFA; /* Fondo gris claro para diferenciarlo */
         border: none;
         min-width: auto;
-        padding: 10px 0;
+        padding: 0;
+        display: none; /* Oculto como acordeón */
+        opacity: 1;
+        visibility: visible;
     }
 
+    /* Quitar la división visual del mega menu de escritorio */
     .mega-menu-divider {
         display: none; 
     }
 
-    
+    /* Estilos de la lista interna del submenú en móvil */
+    .mega-menu-list {
+        padding: 10px 0;
+    }
+
+    .mega-menu-list li::before {
+        color: #888; /* Puntos grises */
+        left: 25px;
+    }
+
+    .mega-menu-list li a {
+        color: #555555;
+        padding: 12px 20px 12px 45px; /* Más espacio a la izquierda */
+        display: block;
+    }
+
+    .mega-menu-list li a:hover {
+        color: #000;
+    }
+
+    /* Abrir el acordeón al hacer clic (Manejado por el JS) */
+    .has-mega-menu.submenu-active .mega-menu {
+        display: flex;
+    }
+
+    .has-mega-menu.submenu-active .mobile-arrow {
+        transform: rotate(90deg); /* Rota la flecha hacia abajo */
+    }
+
+    /* Quitar el hover clásico de PC para que no interfiera en móvil */
     .has-mega-menu:hover .mega-menu {
         transform: none;
     }
 
+    /* 5. FONDO OSCURO DEL MENÚ MÓVIL */
+    .mobile-nav-overlay {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.6);
+        z-index: 3999; /* Justo detrás de .nav-links */
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s;
+    }
 
-    .search-input.active {
-        width: 110px;
+    .mobile-nav-overlay.active {
+        opacity: 1;
+        visibility: visible;
     }
 }
