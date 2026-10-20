@@ -1,0 +1,173 @@
+/* ==========================================================
+   CARRITO: productos del pedido, total y contador
+   Pega esto al final de tu CSS del carrito (el que tiene
+   .barra-carrito) o impórtalo desde style.css.
+
+   Los colores están fijos (no heredan) porque la barra del carrito
+   es clara y el texto del sitio es blanco por el tema oscuro.
+   ========================================================== */
+
+/* ==========================================================
+   CONTADOR sobre el ícono de la bolsa
+   Si .btn-carrito todavía no tiene "position" (relative, absolute
+   o fixed), agrégale position: relative para que el número se
+   acomode sobre él.
+   ========================================================== */
+.btn-carrito__contador{
+    position: absolute;
+    top: -6px;
+    right: -8px;
+    min-width: 18px;
+    height: 18px;
+    padding: 0 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ccff00;
+    color: #000;
+    font-size: 0.7rem;
+    font-weight: 600;
+    line-height: 1;
+}
+
+.btn-carrito__contador[hidden]{
+    display: none;
+}
+
+/* ==========================================================
+   PRODUCTO DENTRO DEL PEDIDO
+   ========================================================== */
+.carrito-item{
+    display: grid;
+    grid-template-columns: 80px minmax(0, 1fr) auto;
+    gap: 14px;
+    padding: 16px 0;
+    border-bottom: 1px solid #eaeaea;
+    color: #111;
+}
+
+.carrito-item:first-child{
+    padding-top: 0;
+}
+
+/* Foto cuadrada con fondo blanco y un borde fino, igual que las cards */
+.carrito-item__imagen{
+    width: 80px;
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
+    background-color: #fff;
+    border: 1px solid #eaeaea;
+}
+
+.carrito-item__info{
+    min-width: 0;
+}
+
+.carrito-item__marca{
+    margin: 0 0 2px;
+    font-size: 12px;
+    color: #666;
+}
+
+.carrito-item__nombre{
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin-bottom: 4px;
+    color: #111;
+    font-size: 14px;
+    line-height: 1.3;
+    text-decoration: none;
+}
+
+.carrito-item__nombre:hover{
+    text-decoration: underline;
+}
+
+.carrito-item__talla{
+    margin: 0 0 8px;
+    font-size: 13px;
+    color: #666;
+}
+
+/* − 1 + */
+.carrito-item__cantidad{
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid #d5d5d5;
+}
+
+.carrito-item__cantidad button{
+    width: 32px;
+    height: 32px;
+    border: none;
+    background: transparent;
+    color: #111;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.carrito-item__cantidad button:hover{
+    background-color: #f2f2f2;
+}
+
+.carrito-item__cantidad span{
+    min-width: 28px;
+    text-align: center;
+    font-size: 14px;
+    color: #111;
+}
+
+/* Precio arriba, botón de quitar abajo */
+.carrito-item__derecha{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.carrito-item__precio{
+    margin: 0;
+    font-size: 14px;
+    font-weight: 600;
+    color: #111;
+    white-space: nowrap;
+}
+
+.carrito-item__quitar{
+    border: none;
+    background: transparent;
+    color: #888;
+    font-size: 14px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.carrito-item__quitar:hover{
+    color: #000;
+}
+
+/* ==========================================================
+   TOTAL (arriba de "Finalizar pedido")
+   ========================================================== */
+.carrito-total{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    font-size: 16px;
+    color: #111;
+}
+
+.carrito-total[hidden]{
+    display: none;
+}
+
+/* "Finalizar pedido" sin productos: apagado y sin efecto al pasar el mouse */
+.btn-finalizar:disabled,
+.btn-finalizar:disabled:hover{
+    background-color: #222;
+    opacity: 0.4;
+    cursor: not-allowed;
+}

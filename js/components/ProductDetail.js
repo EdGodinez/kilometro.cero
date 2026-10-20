@@ -246,10 +246,22 @@ function initDetalle(contenedor, producto) {
         pintarBoton();
     });
 
-    // Añadir al carrito: por ahora solo confirma con el texto del botón.
-    // Cuando exista el carrito, aquí se manda { id, talla, cantidad }.
+    // Añadir al carrito: avisa con un evento y el carrito (carrito.js) lo recibe.
+    // Así este componente no necesita importar nada del carrito.
     agregar.addEventListener('click', () => {
         if (producto.agotado) return;
+
+        document.dispatchEvent(new CustomEvent('carrito:agregar', {
+            detail: {
+                id: producto.id,
+                marca: producto.marca,
+                nombre: producto.nombre,
+                precio: producto.precio,
+                imagen: producto.imagenes?.[0] ?? '',
+                talla: contenedor.querySelector('input[name="talla"]:checked')?.value ?? null,
+                cantidad: leerCantidad(),
+            },
+        }));
 
         agregar.classList.add('detalle__agregar--listo');
         textoAgregar.textContent = 'Agregado ✓';
