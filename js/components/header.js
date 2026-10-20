@@ -77,8 +77,6 @@ export function renderNavbar() {
                         <path d="M16 10a4 4 0 0 1-8 0"></path>
                     </svg>
                 </button>
-
-                </button>
                 
                 <!-- NUEVO: Botón Hamburguesa (Solo se verá en celulares) -->
                 <button id="mobile-menu-btn" class="icon-btn mobile-toggle" aria-label="Menú">
