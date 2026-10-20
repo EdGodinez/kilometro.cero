@@ -11,6 +11,7 @@ import { renderNavbar, initNavbarEvents } from './components/header.js';
 import { renderHero } from './components/hero.js';
 import { renderFooter } from './components/footer.js';
 import { renderContact, initContact } from './components/contact.js';
+import { renderBenefits } from './components/benefits.js';
 import { renderAbout } from './components/about.js';
 // Importación del Carrito
 import { renderCarrito, initCarritoLogica } from './components/carrito.js';
@@ -40,6 +41,16 @@ const heroContainer = document.querySelector('#hero-container');
 
 if (heroContainer) {
   heroContainer.innerHTML = renderHero();
+}
+
+/* ==========================================
+   BENEFITS
+   ========================================== */
+
+const benefitsContainer = document.querySelector('#benefits-container');
+
+if (benefitsContainer) {
+  benefitsContainer.innerHTML = renderBenefits();
 }
 
 /* ==========================================
