@@ -18,6 +18,9 @@
 @import url('./components/tabsSlider.css');
 @import url('./components/productGrid.css');
 @import url('./components/contact.css');
+@import url("./components/auth.css");
+@import url("./components/login.css");
+@import url("./components/register.css");
 @import url('./components/benefits.css');
 
 
