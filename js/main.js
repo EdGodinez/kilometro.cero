@@ -9,6 +9,8 @@
 
 // Componentes propios
 import { renderHero } from './components/hero.js';
+import { renderFooter } from './components/footer.js';
+import { renderContact, initContact } from './components/contact.js';
 import { renderAbout } from './components/about.js';
 
 // Componentes de productos
@@ -31,6 +33,24 @@ if (heroContainer) {
    ABOUT - ABOUT.HTML
    ========================================== */
 
+const sliderContainer = document.querySelector('#slider');
+
+if (sliderContainer) {
+  sliderContainer.innerHTML = renderCardSlider();
+}
+
+/* ==========================================
+   FOOTER
+   ========================================== */
+const footerElement = document.querySelector('#footer');
+footerElement.innerHTML = renderFooter();
+
+/* ==========================================
+   CONTACT
+   ========================================== */
+const app = document.querySelector('#app');
+app.innerHTML = renderContact();
+initContact();
 const aboutContainer = document.querySelector('#about-container');
 
 if (aboutContainer) {
@@ -58,6 +78,8 @@ renderCategorias('#categorias');
 
 // Slider de pestañas
 renderTabsSlider('#tabs-slider');
+renderProductGrid('#product-grid');
+
 
 // Cuadrícula de productos
 renderProductGrid('#product-grid');
