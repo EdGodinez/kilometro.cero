@@ -95,7 +95,7 @@ function plantilla(productos) {
     <section class="new-arrivals max-container">
         <!-- Anuncio: fuera del carrusel, por eso no se mueve -->
         <div class="new-arrivals__banner">
-            <span class="new-arrivals__marca">METTA</span>
+            <span class="new-arrivals__marca">KM.0</span>
             <h2 class="new-arrivals__titulo">Novedades</h2>
             <a class="new-arrivals__boton" href="productos.html?categoria=ropa">Ver todo ↗</a>
         </div>
