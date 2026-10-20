@@ -1,0 +1,209 @@
+/* ==========================================
+   HERO - KILÓMETRO CERO
+   ========================================== */
+
+/* Contenedor principal */
+.hero {
+    position: relative;
+    min-height: 100vh;
+    min-height: 100svh;
+
+    display: flex;
+    align-items: center;
+
+    padding: 3rem 6%;
+    overflow: hidden;
+
+    font-family: var(--font-body);
+
+    background-image: url("../../assets/hero.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: var(--color-bg);
+}
+
+/* Overlay oscuro */
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+
+    background: linear-gradient(to right,
+            rgba(0, 0, 0, 0.80) 0%,
+            rgba(0, 0, 0, 0.55) 35%,
+            rgba(0, 0, 0, 0.20) 100%);
+
+    pointer-events: none;
+}
+
+/* Contenido principal */
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 750px;
+}
+
+/* Texto superior */
+.hero-kicker {
+    font-family: var(--font-heading);
+    font-size: clamp(1.2rem, 2.5vw, 3rem);
+    font-weight: 700;
+    line-height: 1.1;
+    text-transform: uppercase;
+
+    color: var(--color-text);
+
+    margin-bottom: 1rem;
+}
+
+/* Título principal */
+.hero-title {
+    font-family: var(--font-heading);
+    font-size: clamp(3.5rem, 9vw, 9rem);
+    font-weight: 700;
+    line-height: 0.95;
+    text-transform: uppercase;
+
+    color: var(--color-accent);
+    margin-bottom: 1rem;
+}
+
+/* Subtítulo */
+.hero-subtitle {
+    font-family: var(--font-body);
+    font-size: clamp(1rem, 1.5vw, 1.4rem);
+    font-weight: 400;
+
+    color: var(--color-muted);
+    margin-bottom: 2rem;
+}
+
+/* ==========================================
+   BOTONES
+   ========================================== */
+
+.hero-buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+/* Estado normal */
+.hero-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 2rem;
+    min-width: 220px;
+    padding: 1rem 1.5rem;
+
+    font-family: var(--font-body);
+    font-size: 1.2rem;
+    font-weight: 600;
+
+    background-color: transparent;
+    color: var(--color-text);
+    border: 2px solid var(--color-text);
+
+    text-decoration: none;
+    cursor: pointer;
+
+    transition:
+        background-color 0.3s ease,
+        color 0.3s ease;
+}
+
+/* Estado Hover */
+.hero-btn:hover {
+    background-color: var(--color-text);
+    color: var(--color-bg);
+}
+
+/* Accesibilidad */
+.hero-btn:focus-visible {
+    outline: 3px solid var(--color-accent);
+    outline-offset: 4px;
+}
+
+/* ==========================================
+   INDICADOR SCROLL
+   ========================================== */
+
+.hero-scroll {
+    position: absolute;
+    right: 1.5rem;
+    bottom: 3rem;
+    z-index: 2;
+
+    writing-mode: vertical-rl;
+
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.15rem;
+
+    color: var(--color-text);
+}
+
+/* Línea decorativa */
+.hero-scroll::after {
+    content: "";
+    display: block;
+
+    width: 1px;
+    height: 80px;
+    margin: 1rem auto 0;
+
+    background-color: var(--color-accent);
+}
+
+/* ==========================================
+   RESPONSIVE
+   ========================================== */
+
+@media (max-width: 768px) {
+
+    .hero {
+        align-items: flex-end;
+        padding: 2rem 1.5rem;
+        background-position: 60% center;
+    }
+
+    .hero-content {
+        max-width: 100%;
+        padding-bottom: 2rem;
+    }
+
+    .hero-kicker {
+        font-size: 1.2rem;
+    }
+
+    .hero-title {
+        font-size: clamp(3rem, 12vw, 5rem);
+        overflow-wrap: anywhere;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+    }
+
+    .hero-btn {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .hero-scroll {
+        display: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hero-btn {
+        transition: none;
+    }
+}

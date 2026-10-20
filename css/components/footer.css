@@ -1,0 +1,154 @@
+/* xaja principal del Footer */
+footer {
+  background-color: #0A0A0A; 
+  border-top: 1px solid #262626; 
+  padding: 48px 32px 24px 32px;
+  color: #FFFFFF; 
+  font-family: 'Inter', sans-serif;
+}
+
+/* contenedor de las 4 columnas ('fr'-fraccion) */
+.footer-container {
+  max-width: 1200px; /* Límite de ancho para pantallas grandes */
+  margin: 0 auto; 
+  display: grid; /* Activa la cuadrícula */
+  grid-template-columns: 2fr 1fr 1fr 1.5fr; 
+  gap: 36px; /* Espacio de separación entre cada columna */
+}
+
+/* logo (KM.0) */
+.footer-logo {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  color: #FFFFFF;
+  text-decoration: none;
+}
+
+/* el punto del logo con color verde neón */
+.footer-logo .accent-dot {
+  color: #CCFF00; 
+}
+
+/* textos */
+.brand-desc, .newsletter-desc {
+  color: #A1A1AA; 
+  font-size: 12px;
+  line-height: 1.5;
+  margin-top: 12px;
+  max-width: 280px;
+}
+
+/* enlaces de redes sociales */
+.social-links {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.social-links a {
+  color: #A1A1AA;
+  font-size: 11px;
+  font-weight: 600;
+  text-decoration: none;
+  letter-spacing: 1px;
+}
+
+.social-links a:hover {
+  color: #CCFF00;
+}
+
+/* títulos de las columnas hombre-mujer-comunidad */
+.footer-heading {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  margin-bottom: 14px;
+  color: #FFFFFF;
+  text-transform: uppercase;
+}
+
+/* listas de enlaces) */
+.footer-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-list li {
+  margin-bottom: 8px;
+}
+
+.footer-link {
+  color: #A1A1AA;
+  text-decoration: none;
+  font-size: 12px;
+}
+
+.footer-link:hover {
+  color: #FFFFFF;
+}
+
+/* formulario de Newsletter */
+.newsletter-form {
+  display: flex;
+  background-color: #141414; /* Superficie gris muy oscura */
+  border: 1px solid #262626;
+  border-radius: 50px;
+  overflow: hidden;
+  margin-top: 10px;
+}
+
+.newsletter-input {
+  background: transparent;
+  border: none;
+  padding: 10px 12px;
+  color: #FFFFFF;
+  font-size: 12px;
+  width: 100%;
+  outline: none;
+}
+
+.newsletter-input::placeholder {
+  color: #52525B;
+}
+
+.newsletter-btn {
+  background: transparent;
+  border: none;
+  color: #CCFF00; /* Flecha en verde neón */
+  padding: 0 14px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.newsletter-btn:hover {
+  background-color: #CCFF00;
+  color: #0A0A0A;
+}
+
+/* Copyright inferior */
+.footer-bottom {
+  max-width: 1200px;
+  margin: 36px auto 0 auto;
+  padding-top: 18px;
+  border-top: 1px solid #262626;
+  text-align: center;
+  color: #A1A1AA;
+  font-size: 11px;
+}
+
+.footer-bottom p {
+  margin: 0;
+}
+
+/* adaptacion para Celulares */
+@media (max-width: 768px) {
+  .footer-container {
+    /* Si la pantalla es menor a 768px, las 4 columnas pasan a ser de 1 sola columna hacia abajo */
+    grid-template-columns: 1fr; 
+    gap: 28px;
+  }
+}
