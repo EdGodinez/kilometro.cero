@@ -333,3 +333,14 @@
         right: 8px;
     }
 }
+
+.card__enlace{
+    display: block;
+    color: inherit;
+    text-decoration: none;
+}
+
+.card__etiqueta--agotado{
+    background-color: #e5e5e5;
+    color: #666;
+}

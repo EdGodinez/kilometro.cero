@@ -24,7 +24,7 @@ export const RUTA_PRODUCTOS = 'assets/data/productos.json';
 
 // Convierte un número (5999) en texto de dinero ($5,999.00).
 // Se crea una sola vez aquí arriba y se reutiliza en cada card.
-const formatoPrecio = new Intl.NumberFormat('es-MX', {
+export const formatoPrecio = new Intl.NumberFormat('es-MX', {
     style: 'currency',
     currency: 'MXN',
 });
@@ -55,39 +55,30 @@ export async function cargarProductos(url) {
 // Recibe UN producto y devuelve el HTML de su card.
 // Si cambias algo aquí, cambia en todos los sliders a la vez.
 export function renderCard(producto) {
-    // Acepta "imagenes" (lista) o, si el producto trae la versión
-    // vieja "imagen" (una sola), la convierte en lista.
-    // Si no trae ninguna, usa una lista vacía para que no se rompa.
     const imagenes = producto.imagenes ?? (producto.imagen ? [producto.imagen] : []);
-
-    // La primera imagen es la normal y la segunda es la del hover.
-    // Las demás se guardan en el JSON para la vista del producto.
     const [principal, hover] = imagenes;
+    const nombre = producto.nombre.replaceAll('"', '&quot;');
 
     return `
         <article class="card">
-            <div class="card__media">
-                <!-- Etiqueta: solo si el producto trae "nuevo": true en el JSON -->
-                ${producto.nuevo ? '<span class="card__etiqueta">Nuevo</span>' : ''}
+            <a class="card__enlace" href="producto.html?id=${producto.id}">
+                <div class="card__media">
+                    ${producto.agotado
+                        ? '<span class="card__etiqueta card__etiqueta--agotado">Agotado</span>'
+                        : producto.nuevo ? '<span class="card__etiqueta">Nuevo</span>' : ''}
 
-                <!-- Imagen normal -->
-                <img class="card__imagen" src="${principal ?? ''}" alt="${producto.nombre}">
-
-                <!-- Imagen del hover: solo se crea si el producto tiene una segunda foto.
-                     Está oculta por CSS y aparece al pasar el mouse. -->
-                ${hover ? `<img class="card__imagen card__imagen--hover" src="${hover}" alt="" aria-hidden="true">` : ''}
-            </div>
-            <div class="card__info">
-                <p class="card__marca">${producto.marca}</p>
-                <h3 class="card__nombre">${producto.nombre}</h3>
-
-                <!-- El precio viene como número en el JSON y aquí se formatea -->
-                <p class="card__precio">${formatoPrecio.format(producto.precio)}</p>
-            </div>
+                    <img class="card__imagen" src="${principal ?? ''}" alt="${nombre}">
+                    ${hover ? `<img class="card__imagen card__imagen--hover" src="${hover}" alt="" aria-hidden="true">` : ''}
+                </div>
+                <div class="card__info">
+                    <p class="card__marca">${producto.marca}</p>
+                    <h3 class="card__nombre">${producto.nombre}</h3>
+                    <p class="card__precio">${formatoPrecio.format(producto.precio)}</p>
+                </div>
+            </a>
         </article>
     `;
 }
-
 // Recibe la lista de productos y devuelve el HTML de toda la sección:
 // anuncio + flechas + carrusel con todas las cards.
 function plantilla(productos) {

@@ -1,0 +1,482 @@
+/* ==========================================================
+   PÁGINA DE PRODUCTO (producto.html)
+   Esquinas rectas en todo: nada lleva border-radius.
+   ========================================================== */
+.detalle{
+    padding: 32px 0 80px;
+}
+
+/* ==========================================================
+   MIGAS DE PAN (Productos / Calzado)
+   ========================================================== */
+.detalle__migas{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 24px;
+    font-size: clamp(0.8rem, 1vw, 0.875rem);
+    color: var(--color-muted);
+}
+
+.detalle__migas a{
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.detalle__migas a:hover{
+    color: var(--color-accent);
+}
+
+/* ==========================================================
+   DISTRIBUCIÓN: galería a la izquierda, información a la derecha
+   min-width: 0 en las columnas evita que se desborden de la pantalla
+   ========================================================== */
+.detalle__layout{
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+    gap: clamp(32px, 5vw, 80px);
+    align-items: start;
+}
+
+/* ==========================================================
+   GALERÍA
+   ========================================================== */
+
+/* Columna de miniaturas + foto principal */
+.detalle__galeria{
+    display: grid;
+    grid-template-columns: 88px minmax(0, 1fr);
+    gap: 16px;
+    min-width: 0;
+}
+
+/* Miniaturas en columna (en móvil pasan a fila debajo de la foto) */
+.detalle__miniaturas{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    min-width: 0;
+}
+
+.detalle__miniatura{
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    padding: 0;
+    border: 2px solid transparent;
+    background-color: #fff;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+}
+
+.detalle__miniatura:hover{
+    border-color: #777;
+}
+
+.detalle__miniatura--activa,
+.detalle__miniatura--activa:hover{
+    border-color: var(--color-accent);
+}
+
+.detalle__miniatura img{
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* Foto principal: cuadrada, fondo blanco para que el producto se vea completo */
+.detalle__marco{
+    position: relative;
+    grid-column: 2;
+    aspect-ratio: 1 / 1;
+    background-color: #fff;
+}
+
+/* Si no hay miniaturas, la foto ocupa todo el ancho */
+.detalle__galeria > .detalle__marco:only-child{
+    grid-column: 1 / -1;
+}
+
+.detalle__imagen{
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* Insignia "Nuevo" / "Agotado" arriba a la derecha */
+.detalle__insignia{
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    z-index: 2;
+    padding: 8px 16px;
+    background-color: #000;
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.detalle__insignia--agotado{
+    background-color: #555;
+}
+
+/* ==========================================================
+   INFORMACIÓN
+   ========================================================== */
+.detalle__info{
+    min-width: 0;
+}
+
+.detalle__marca{
+    margin: 0 0 8px;
+    font-size: clamp(0.8rem, 1vw, 0.875rem);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--color-muted);
+}
+
+.detalle__titulo{
+    margin: 0 0 16px;
+    font-family: var(--font-heading);
+    font-size: clamp(1.5rem, 2.6vw, 2.25rem);
+    line-height: 1.15;
+    text-transform: uppercase;
+    overflow-wrap: anywhere;
+}
+
+.detalle__precio{
+    margin: 0 0 32px;
+    font-size: clamp(1.15rem, 1.6vw, 1.4rem);
+}
+
+/* Textos pequeños sobre cada bloque ("Talla:", "Cantidad:") */
+.detalle__etiqueta{
+    display: block;
+    margin-bottom: 12px;
+    font-size: 0.9rem;
+    color: var(--color-muted);
+}
+
+.detalle__talla-elegida{
+    color: var(--color-text);
+}
+
+/* ==========================================================
+   TALLAS (botones cuadrados)
+   El radio real queda oculto; se estiliza el texto de al lado.
+   ========================================================== */
+.detalle__tallas{
+    margin: 0 0 28px;
+    padding: 0;
+    border: none;
+    min-width: 0;
+}
+
+.detalle__tallas-lista{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.detalle__talla{
+    position: relative;
+    cursor: pointer;
+}
+
+.detalle__talla input{
+    position: absolute;
+    opacity: 0;
+    inset: 0;
+    cursor: pointer;
+}
+
+.detalle__talla span{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 48px;
+    height: 48px;
+    padding: 0 12px;
+    border: 1px solid #444;
+    font-size: 0.9rem;
+    transition: border-color 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+}
+
+.detalle__talla:hover span{
+    border-color: #fff;
+}
+
+/* Talla elegida: fondo lima con texto negro */
+.detalle__talla input:checked + span{
+    border-color: var(--color-accent);
+    background-color: var(--color-accent);
+    color: #000;
+}
+
+/* Contorno al navegar con teclado */
+.detalle__talla input:focus-visible + span{
+    outline: 2px solid #fff;
+    outline-offset: 2px;
+}
+
+/* ==========================================================
+   CANTIDAD (− 1 +)
+   ========================================================== */
+.detalle__cantidad-bloque{
+    margin-bottom: 24px;
+}
+
+.detalle__cantidad{
+    display: inline-flex;
+    border: 1px solid #444;
+}
+
+.detalle__cantidad-boton{
+    width: 48px;
+    height: 48px;
+    border: none;
+    background: transparent;
+    color: var(--color-text);
+    font-size: 1.25rem;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.detalle__cantidad-boton:hover{
+    color: var(--color-accent);
+}
+
+.detalle__cantidad-valor{
+    width: 56px;
+    height: 48px;
+    border: none;
+    background: transparent;
+    color: var(--color-text);
+    font-family: inherit;
+    font-size: 1rem;
+    text-align: center;
+    appearance: textfield;
+    -moz-appearance: textfield;
+}
+
+/* Quita las flechitas nativas del input numérico */
+.detalle__cantidad-valor::-webkit-outer-spin-button,
+.detalle__cantidad-valor::-webkit-inner-spin-button{
+    appearance: none;
+    margin: 0;
+}
+
+/* ==========================================================
+   COMPRA: botón grande
+   ========================================================== */
+.detalle__compra{
+    display: flex;
+    gap: 12px;
+    margin-bottom: 32px;
+}
+
+.detalle__agregar{
+    flex: 1;
+    min-width: 0;
+    height: 52px;
+    padding: 0 16px;
+    border: none;
+    background-color: var(--color-accent);
+    color: #000;
+    font-family: inherit;
+    font-size: clamp(0.8rem, 1vw, 0.95rem);
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.detalle__agregar:hover{
+    background-color: #fff;
+}
+
+/* Confirmación al añadir */
+.detalle__agregar--listo,
+.detalle__agregar--listo:hover{
+    background-color: #fff;
+}
+
+/* Producto agotado */
+.detalle__agregar:disabled{
+    background-color: #2a2a2a;
+    color: #888;
+    cursor: not-allowed;
+}
+
+/* ==========================================================
+   ACORDEONES (Descripción / Detalles)
+   ========================================================== */
+.detalle__acordeon{
+    border-top: 1px solid #2a2a2a;
+}
+
+.detalle__acordeon:last-child{
+    border-bottom: 1px solid #2a2a2a;
+}
+
+.detalle__acordeon-titulo{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    font-size: 1.05rem;
+    cursor: pointer;
+    list-style: none;
+}
+
+/* Quita el triángulo nativo */
+.detalle__acordeon-titulo::-webkit-details-marker{
+    display: none;
+}
+
+/* Flechita que gira al abrir */
+.detalle__acordeon-titulo::after{
+    content: '';
+    width: 9px;
+    height: 9px;
+    border-right: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+    transform: rotate(45deg);
+    transition: transform 0.3s ease;
+}
+
+.detalle__acordeon[open] .detalle__acordeon-titulo::after{
+    transform: rotate(-135deg);
+}
+
+.detalle__acordeon-texto{
+    margin: 0 0 20px;
+    line-height: 1.6;
+    color: var(--color-muted);
+}
+
+/* Lista de datos: etiqueta a la izquierda, valor a la derecha */
+.detalle__datos{
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: 10px 24px;
+    margin: 0 0 20px;
+    font-size: 0.9rem;
+}
+
+.detalle__datos dt{
+    color: var(--color-muted);
+}
+
+.detalle__datos dd{
+    margin: 0;
+    overflow-wrap: anywhere;
+}
+
+/* ==========================================================
+   PRODUCTO NO ENCONTRADO
+   ========================================================== */
+.detalle__vacio{
+    padding: 80px 0;
+    text-align: center;
+}
+
+.detalle__vacio-titulo{
+    margin: 0 0 24px;
+    font-family: var(--font-heading);
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+}
+
+.detalle__vacio-enlace{
+    display: inline-block;
+    padding: 14px 28px;
+    background-color: var(--color-accent);
+    color: #000;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.detalle__vacio-enlace:hover{
+    background-color: #fff;
+}
+
+/* ==========================================================
+   TABLET (hasta 1024px)
+   Una sola columna: galería arriba, información abajo.
+   ========================================================== */
+@media (max-width: 1024px){
+    .detalle__layout{
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+/* ==========================================================
+   TABLET VERTICAL Y MÓVIL (hasta 767px)
+   El botón de compra queda fijo en la parte inferior de la pantalla
+   todo el tiempo, a todo el ancho y con fondo para que el contenido
+   no se vea por detrás.
+   ========================================================== */
+@media (max-width: 767px){
+    .detalle__compra{
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 10;
+        margin: 0;
+        padding: 12px 5vw;
+        background-color: var(--color-bg);
+        border-top: 1px solid #2a2a2a;
+    }
+
+    /* Espacio extra al final de la página para que la barra fija
+       no tape el footer (solo en la página de producto) */
+    body:has(.detalle__compra){
+        padding-bottom: 77px;
+    }
+}
+
+/* ==========================================================
+   MÓVIL (hasta 567px)
+   Las miniaturas pasan debajo de la foto, en una fila con scroll.
+   ========================================================== */
+@media (max-width: 567px){
+    .detalle{
+        padding: 20px 0 56px;
+    }
+
+    .detalle__galeria{
+        grid-template-columns: minmax(0, 1fr);
+        gap: 12px;
+    }
+
+    .detalle__marco{
+        grid-column: 1;
+    }
+
+    .detalle__miniaturas{
+        order: 2;
+        flex-direction: row;
+        overflow-x: auto;
+        scrollbar-width: none;
+    }
+
+    .detalle__miniaturas::-webkit-scrollbar{
+        display: none;
+    }
+
+    .detalle__miniatura{
+        flex: 0 0 72px;
+        width: 72px;
+    }
+
+    .detalle__insignia{
+        top: 12px;
+        right: 12px;
+    }
+}
