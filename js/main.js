@@ -1,4 +1,3 @@
-
 /* ==========================================
    KILÓMETRO CERO - MAIN JS
    ========================================== */
@@ -30,27 +29,30 @@ if (heroContainer) {
 }
 
 /* ==========================================
-   ABOUT - ABOUT.HTML
-   ========================================== */
-
-const sliderContainer = document.querySelector('#slider');
-
-if (sliderContainer) {
-  sliderContainer.innerHTML = renderCardSlider();
-}
-
-/* ==========================================
    FOOTER
    ========================================== */
+
 const footerElement = document.querySelector('#footer');
-footerElement.innerHTML = renderFooter();
+
+if (footerElement) {
+  footerElement.innerHTML = renderFooter();
+}
 
 /* ==========================================
    CONTACT
    ========================================== */
+
 const app = document.querySelector('#app');
-app.innerHTML = renderContact();
-initContact();
+
+if (app) {
+  app.innerHTML = renderContact();
+  initContact();
+}
+
+/* ==========================================
+   ABOUT - ABOUT.HTML
+   ========================================== */
+
 const aboutContainer = document.querySelector('#about-container');
 
 if (aboutContainer) {
@@ -78,8 +80,6 @@ renderCategorias('#categorias');
 
 // Slider de pestañas
 renderTabsSlider('#tabs-slider');
-renderProductGrid('#product-grid');
-
 
 // Cuadrícula de productos
 renderProductGrid('#product-grid');
