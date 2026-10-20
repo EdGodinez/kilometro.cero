@@ -1,0 +1,90 @@
+
+/* ==========================================
+   KILÓMETRO CERO - AUTENTICACIÓN
+   ========================================== */
+
+/* Contenedor del usuario */
+#auth-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+/* Mantener el estilo del icono */
+#auth-container > .icon-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Iconos Boxicons */
+#auth-container .bx {
+    font-size: 22px;
+}
+
+/* Botón de usuario */
+.auth-user-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+}
+
+/* Nombre del usuario */
+.auth-user-btn span {
+    font-size: 13px;
+    font-weight: 500;
+}
+
+/* Menú desplegable */
+.auth-dropdown {
+    position: absolute;
+    top: calc(100% + 12px);
+    right: 0;
+    min-width: 170px;
+    padding: 8px;
+    background: #171717;
+    color: #ffffff;
+    border: 1px solid #333333;
+    border-radius: 8px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+/* Ocultar cuando esté cerrado */
+.auth-dropdown[hidden] {
+    display: none;
+}
+
+/* Botón cerrar sesión */
+.auth-logout-btn {
+    display: block;
+    width: 100%;
+    padding: 10px 12px;
+    border: none;
+    border-radius: 5px;
+    background: transparent;
+    color: inherit;
+    text-align: left;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.auth-logout-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Adaptación móvil */
+@media (max-width: 768px) {
+    .auth-user-btn span {
+        display: none;
+    }
+
+    .auth-user-btn .bx-chevron-down {
+        display: none;
+    }
+}
