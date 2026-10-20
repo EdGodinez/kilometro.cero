@@ -1,0 +1,99 @@
+/* ==========================================
+   SECCIÓN PRE-FOOTER: BARRA DE BENEFICIOS
+   ========================================== */
+
+.benefits-section {
+  background-color: #ffffff;
+  border-top: 1px solid #e5e5e5;
+  border-bottom: 1px solid #e5e5e5;
+  padding: 40px 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.benefits-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 30px;
+  align-items: flex-start;
+}
+
+@media (min-width: 768px) {
+  .benefits-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 992px) {
+  .benefits-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+  }
+}
+
+.benefit-card {
+  text-align: center;
+  padding: 24px 20px; /* Un poco más de espacio interno para que luzca mejor al elevarse */
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 8px; /* Bordes ligeramente redondeados para suavizar la tarjeta */
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease; /* Animación suave */
+  cursor: pointer;
+}
+
+/* Efecto Hover: Se eleva y genera una sombra sutil */
+.benefit-card:hover {
+  transform: translateY(-6px); /* Eleva la tarjeta hacia arriba */
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08); /* Sombra elegante */
+  background-color: #fafafa; /* Fondo ligeramente grisáceo para destacar */
+}
+
+@media (min-width: 992px) {
+  .benefit-card:not(:last-child) {
+    border-right: 1px solid #e5e5e5;
+  }
+}
+
+.benefit-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 40px;
+  margin-bottom: 12px;
+  color: #111111;
+}
+
+.benefit-icon svg {
+  width: 28px !important;
+  height: 28px !important;
+  min-width: 28px !important;
+  min-height: 28px !important;
+  max-width: 28px !important;
+  max-height: 28px !important;
+  stroke: currentColor;
+  fill: none;
+}
+
+.benefit-title {
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #111111;
+  margin: 0 0 8px 0;
+}
+
+.benefit-description {
+  font-size: 13px;
+  color: #666666;
+  line-height: 1.4;
+  margin: 0;
+}
