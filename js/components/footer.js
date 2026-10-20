@@ -17,9 +17,9 @@ export function renderFooter() {
             <div class="footer-col nav-col">
                 <h4 class="footer-heading">PARA ÉL</h4>
                 <ul class="footer-list">
-                    <li><a href="#hombre-calzado" class="footer-link">Calzado</a></li>
-                    <li><a href="#hombre-ropa" class="footer-link">Ropa</a></li>
-                    <li><a href="#hombre-accesorios" class="footer-link">Accesorios</a></li>
+                    <li><a href="productos.html?genero=hombre&cat=calzado" class="footer-link">Calzado</a></li>
+                    <li><a href="productos.html?genero=hombre&cat=ropa" class="footer-link">Ropa</a></li>
+                    <li><a href="productos.html?genero=hombre&cat=accesorios" class="footer-link">Accesorios</a></li>
                 </ul>
             </div>
 
@@ -27,9 +27,9 @@ export function renderFooter() {
             <div class="footer-col nav-col">
                 <h4 class="footer-heading">PARA ELLA</h4>
                 <ul class="footer-list">
-                    <li><a href="#mujer-calzado" class="footer-link">Calzado</a></li>
-                    <li><a href="#mujer-ropa" class="footer-link">Ropa</a></li>
-                    <li><a href="#mujer-accesorios" class="footer-link">Accesorios</a></li>
+                    <li><a href="productos.html?genero=mujer&cat=calzado" class="footer-link">Calzado</a></li>
+                    <li><a href="productos.html?genero=mujer&cat=ropa" class="footer-link">Ropa</a></li>
+                    <li><a href="productos.html?genero=mujer&cat=accesorios" class="footer-link">Accesorios</a></li>
                 </ul>
             </div>
 

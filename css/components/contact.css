@@ -1,0 +1,229 @@
+/* ==========================================================================
+   PÁGINA DE CONTACTO (KM.0)
+   ========================================================================== */
+
+/* Configuración General */
+.contact-page {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    color: #111111;
+    background-color: #ffffff;
+}
+
+/* 1. HERO (Sección Superior) */
+.contact-hero {
+    background-color: #0d0d0d;
+    color: #ffffff;
+    padding: 80px 20px;
+    text-align: center;
+    border-bottom: 1px solid #222222;
+}
+
+.contact-hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.contact-kicker {
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #888888;
+    margin-bottom: 12px;
+}
+
+.contact-title {
+    font-size: 3rem;
+    font-weight: 900;
+    letter-spacing: -1px;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+}
+
+.contact-subtitle {
+    font-size: 1.1rem;
+    color: #cccccc;
+    line-height: 1.6;
+}
+
+/* 2. CONTENEDOR PRINCIPAL (2 Columnas) */
+.contact-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 20px;
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 60px;
+}
+
+/* 3. COLUMNA FORMULARIO */
+.contact-heading {
+    font-size: 1.4rem;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+    border-left: 3px solid #000000;
+    padding-left: 12px;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.contact-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.contact-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.contact-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #333333;
+}
+
+.contact-input {
+    width: 100%;
+    padding: 14px 16px;
+    font-size: 0.95rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+    color: #111111;
+    outline: none;
+    transition: all 0.2s ease;
+    box-sizing: border-box;
+}
+
+.contact-input:focus {
+    border-color: #000000;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.05);
+}
+
+.contact-textarea {
+    resize: vertical;
+    min-height: 140px;
+}
+
+.contact-btn {
+    background-color: #000000;
+    color: #ffffff;
+    border: none;
+    padding: 16px 28px;
+    font-size: 0.9rem;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    margin-top: 10px;
+}
+
+.contact-btn:hover {
+    background-color: #222222;
+}
+
+.contact-btn:active {
+    transform: scale(0.99);
+}
+
+.contact-status {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #008844;
+    margin-top: 10px;
+}
+
+/* 4. COLUMNA INFORMACIÓN DE CONTACTO */
+.contact-info-col {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.contact-card {
+    background-color: #f8f8f8;
+    border: 1px solid #eeeeee;
+    padding: 20px 24px;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.contact-card-label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #777777;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.contact-card-value {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #111111;
+}
+
+/* Botones de Redes Sociales */
+.contact-social {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+.contact-social-btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    border: 1px solid #111111;
+    border-radius: 6px;
+    color: #111111;
+    font-size: 0.85rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.contact-social-btn:hover {
+    background-color: #111111;
+    color: #ffffff;
+    transform: translateX(4px);
+}
+
+/* 5. DISEÑO RESPONSIVO */
+@media (max-width: 850px) {
+    .contact-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        padding: 40px 20px;
+    }
+
+    .contact-hero {
+        padding: 60px 20px;
+    }
+
+    .contact-title {
+        font-size: 2.2rem;
+    }
+
+    .contact-row {
+        grid-template-columns: 1fr;
+    }
+}
