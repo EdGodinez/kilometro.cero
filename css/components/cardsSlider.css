@@ -46,6 +46,7 @@
 .new-arrivals__marca{
     font-size: clamp(0.8rem, 1vw, 0.9rem);
     letter-spacing: 1px;
+    color: #ccff00;
 }
 
 /* Título grande ("New Arrivals") */
