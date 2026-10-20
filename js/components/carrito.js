@@ -16,14 +16,24 @@
 
    Los productos se guardan en localStorage, así que el carrito
    se conserva al cambiar de página o recargar.
+
+   Cada usuario con sesión tiene su propio carrito. Si alguien agrega
+   productos sin haber iniciado sesión, al entrar se pasan a su carrito.
+   La sesión se lee con getSession() de auth.js.
    ========================================================== */
+
+import { getSession } from '../auth.js';
 
 
 /* ----------------------------------------------------------
    CONFIGURACIÓN
    ---------------------------------------------------------- */
 
-const CLAVE_STORAGE = 'kmcero-carrito';
+// Cada persona tiene su propio carrito en localStorage:
+//   - Sin sesión (invitado):  "kmcero-carrito"
+//   - Con sesión:             "kmcero-carrito:<id del usuario>"
+const CLAVE_INVITADO = 'kmcero-carrito';
+const CLAVE_SESION = 'kilometroCero_session'; // la guarda auth.js
 const CANTIDAD_MAX = 10;
 
 const formatoPrecio = new Intl.NumberFormat('es-MX', {
@@ -36,29 +46,76 @@ const formatoPrecio = new Intl.NumberFormat('es-MX', {
    ESTADO (los productos del pedido)
    ---------------------------------------------------------- */
 
-// Lee el carrito guardado. Si no hay nada o está dañado, empieza vacío.
-// El try/catch cubre navegadores con el almacenamiento bloqueado.
-function leerGuardado() {
+// Un producto en otra talla es otra línea del pedido, por eso la clave lleva la talla
+const claveDe = (id, talla) => `${id}|${talla ?? ''}`;
+
+// Los textos de localStorage pueden faltar o estar dañados: todo va con try/catch.
+function leer(clave) {
     try {
-        const datos = JSON.parse(localStorage.getItem(CLAVE_STORAGE));
+        const datos = JSON.parse(localStorage.getItem(clave));
         return Array.isArray(datos) ? datos : [];
     } catch {
         return [];
     }
 }
 
-function guardar() {
+function escribir(clave, lista) {
     try {
-        localStorage.setItem(CLAVE_STORAGE, JSON.stringify(items));
+        localStorage.setItem(clave, JSON.stringify(lista));
     } catch {
         // sin almacenamiento: el carrito funciona, pero no se conserva
     }
 }
 
-let items = leerGuardado();
+// Clave del carrito de quien tiene la sesión abierta ahora mismo
+function claveActual() {
+    const sesion = getSession();
+    return sesion ? `${CLAVE_INVITADO}:${sesion.id}` : CLAVE_INVITADO;
+}
 
-// Un producto en otra talla es otra línea del pedido, por eso la clave lleva la talla
-const claveDe = (id, talla) => `${id}|${talla ?? ''}`;
+// Junta dos listas: si el mismo producto (misma talla) está en ambas, suma cantidades
+function fusionar(base, extra) {
+    const resultado = base.map((i) => ({ ...i }));
+
+    extra.forEach((nuevo) => {
+        const existente = resultado.find((i) => claveDe(i.id, i.talla) === claveDe(nuevo.id, nuevo.talla));
+
+        if (existente) existente.cantidad = limitar(existente.cantidad + nuevo.cantidad);
+        else resultado.push({ ...nuevo });
+    });
+
+    return resultado;
+}
+
+// Carga el pedido de quien está en la página.
+// Si acaba de iniciar sesión y traía productos como invitado, se pasan a su carrito.
+function cargarItems() {
+    const sesion = getSession();
+    if (!sesion) return leer(CLAVE_INVITADO);
+
+    const clave = claveActual();
+    const delInvitado = leer(CLAVE_INVITADO);
+    let propios = leer(clave);
+
+    if (delInvitado.length) {
+        propios = fusionar(propios, delInvitado);
+        escribir(clave, propios);
+        try {
+            localStorage.removeItem(CLAVE_INVITADO);
+        } catch {
+            // ignorar
+        }
+    }
+
+    return propios;
+}
+
+function guardar() {
+    escribir(claveActual(), items);
+}
+
+// Los productos del pedido. Se cargan en initCarritoLogica().
+let items = [];
 
 
 /* ----------------------------------------------------------
@@ -115,10 +172,8 @@ export function renderCarrito() {
             <div class="carrito-footer">
                 <button id="btn-finalizar" class="btn-finalizar">Finalizar pedido</button>
                 <div class="metodos-pago">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c5/MercadoLibre_icono.svg" alt="Mercado Libre" title="Mercado Libre">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal" title="PayPal">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="Mastercard" title="Mastercard">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Visa_Inc._logo.svg/300px-Visa_Inc._logo.svg.png" alt="Visa" title="Visa">
                 </div>
             </div>
         </div>
@@ -271,6 +326,19 @@ export function initCarritoLogica() {
 
     document.addEventListener('carrito:agregar', alAgregar);
 
-    // Estado inicial: lo que había guardado
+    // Cambios hechos en OTRA pestaña del navegador:
+    // - Iniciar o cerrar sesión: recarga esta pestaña para mostrar el carrito correcto.
+    // - Cambió el carrito de esta misma persona: se vuelve a leer y a pintar.
+    window.addEventListener('storage', (e) => {
+        if (e.key === CLAVE_SESION) {
+            window.location.reload();
+        } else if (e.key === claveActual()) {
+            items = leer(claveActual());
+            pintar();
+        }
+    });
+
+    // Estado inicial: el carrito de quien está en la página
+    items = cargarItems();
     pintar();
 }

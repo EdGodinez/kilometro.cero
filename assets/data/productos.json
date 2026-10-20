@@ -104,6 +104,7 @@
         "colecciones": [],
         "categoria": "ropa",
         "genero": "mujer",
+        "agotado":true,
         "precio": 949,
         "imagenes": [
             "https://mettarunninghouse.com/cdn/shop/files/SHORTNEGRO-1.png?v=1789922500&width=1000",

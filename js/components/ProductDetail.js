@@ -205,11 +205,11 @@ function initDetalle(contenedor, producto) {
         return Number.isFinite(n) ? Math.min(Math.max(n, 1), CANTIDAD_MAX) : 1;
     };
 
-    // Texto del botón: "Añadir al carrito - $1,299.00" (precio × cantidad)
+    // Texto del botón: "Añadir a la bolsa - $1,299.00" (precio × cantidad)
     const pintarBoton = () => {
         textoAgregar.textContent = producto.agotado
             ? 'Agotado'
-            : `Añadir al carrito - ${formatoPrecio.format(producto.precio * leerCantidad())}`;
+            : `Añadir a la bolsa - ${formatoPrecio.format(producto.precio * leerCantidad())}`;
     };
 
     // Clic en una miniatura: cambia la foto principal
@@ -246,7 +246,7 @@ function initDetalle(contenedor, producto) {
         pintarBoton();
     });
 
-    // Añadir al carrito: avisa con un evento y el carrito (carrito.js) lo recibe.
+    // Añadir a la bolsa: avisa con un evento y el carrito (carrito.js) lo recibe.
     // Así este componente no necesita importar nada del carrito.
     agregar.addEventListener('click', () => {
         if (producto.agotado) return;
