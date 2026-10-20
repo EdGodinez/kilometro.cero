@@ -22,8 +22,8 @@ import { renderCardSlider } from './components/CardSlider.js';
 import { renderCategorias } from './components/Categorias.js';
 import { renderTabsSlider } from './components/TabsSlider.js';
 import { renderProductGrid } from './components/ProductGrid.js';
-import { renderProductDetail } from './components/ProductDetail.js'
-
+import { renderProductDetail } from './components/ProductDetail.js';
+import { initAnimaciones } from './components/animaciones.js';
 /* ==========================================
    HEADER
    ========================================== */
@@ -122,6 +122,7 @@ renderTabsSlider('#tabs-slider');
 renderProductGrid('#product-grid');
 
 renderProductDetail('#product-detail');
+initAnimaciones();
 
 /* ==========================================
    CARRITO DE COMPRAS

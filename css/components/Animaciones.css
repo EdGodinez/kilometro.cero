@@ -1,0 +1,52 @@
+/* ==========================================================
+   ANIMACIÓN DE ENTRADA DE TEXTOS (h2 y p)
+   animaciones.js agrega estas clases; aquí solo se define el efecto.
+
+   Para cambiar el efecto, ajusta estas variables:
+   --distancia : cuánto sube el texto al aparecer
+   --duracion  : cuánto tarda la animación
+   ========================================================== */
+
+/* Estado inicial: el texto espera invisible, un poco más abajo */
+.anim-texto{
+    --distancia: 24px;
+    --duracion: 0.7s;
+
+    opacity: 0;
+}
+
+/* Los títulos suben un poco más que los párrafos */
+h2.anim-texto{
+    --distancia: 32px;
+}
+
+/* Al entrar en pantalla: sube y aparece.
+   "both" mantiene el estado final cuando termina, y respeta el
+   retraso (--retraso) que calcula el JS cuando entran varios juntos. */
+.anim-texto--visible{
+    animation: texto-entrada var(--duracion) cubic-bezier(0.22, 0.61, 0.36, 1) var(--retraso, 0s) both;
+}
+
+@keyframes texto-entrada{
+    from{
+        opacity: 0;
+        transform: translateY(var(--distancia));
+    }
+
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Si la persona pidió menos movimiento en su sistema:
+   sin animación, el texto se ve de inmediato */
+@media (prefers-reduced-motion: reduce){
+    .anim-texto{
+        opacity: 1;
+    }
+
+    .anim-texto--visible{
+        animation: none;
+    }
+}
